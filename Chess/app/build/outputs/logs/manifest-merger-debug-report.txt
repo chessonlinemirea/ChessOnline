@@ -1,0 +1,160 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:2:1-25:12
+MERGED from [com.android.support:appcompat-v7:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\9ebc8a792b827c7f113bcd1bfd7b3e0d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\a3b8c6502e2f6d552f6bf1a73eeceac0\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\9c7d342f666b17e2567689b532fa21a0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\cec04ba9775014835d4a3a3fe3a28fa2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\767157ffd1fa4b4a683706e7daf7aa0e\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\b41a5713b605e18f8036c9256d3a7fff\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\742fae95b8886dd5d13c74ef3a1c05bc\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\665d61ff4978c5ef6a3bbb6cb870b2b0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\868db48ffcfcc12511bd4387db9212fb\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\de5cdf9b91c539bfa35b3414b3a76ac1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\227ea2f43596a5205a25e3ece9915fce\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\fb21256a7730205376ffa3579c91291d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\0c0f03fcf82134bbb60ace819694b907\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\6ddd133ff1224e19a3261e50c31fa595\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\33b8ad7287c799c9b40804b8f6b4afd0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\5ac6abce6db81b8f5dff5461f4193c5f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\67b7c6024133f80b0cc2c61e0344e81a\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\65f9462c067f57a2d6af1f9db1a9b36d\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\e6156345986cc6c8388b22fe3f5f54ca\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\acc4469d8e41ea8d5f61514dcd30c3b7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\ae9e089e0dc9b6073d1cbeb5d5b7d3ba\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\91e95bf90c84e487cec4ff831616694d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\ee8cd57c2a229e8c44d023cc48db0952\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\bea8787d29320eb93015c10fc142a8f0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\dd095c710352dee10b71dbcd24c9e6dc\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\27a6cf2d008300b8702f4920b330367e\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\4e3beaf69a9c81ac59fc38a6a59b98d8\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:2:1-25:12
+	package
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:4:5-32
+		INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:2:1-25:12
+		INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:2:1-25:12
+		INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:2:11-69
+application
+ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:6:5-23:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\a3b8c6502e2f6d552f6bf1a73eeceac0\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\a3b8c6502e2f6d552f6bf1a73eeceac0\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-compat:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\67b7c6024133f80b0cc2c61e0344e81a\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\67b7c6024133f80b0cc2c61e0344e81a\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\65f9462c067f57a2d6af1f9db1a9b36d\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\65f9462c067f57a2d6af1f9db1a9b36d\AndroidManifest.xml:22:5-23:19
+	android:screenOrientation
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:12:9-50
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\67b7c6024133f80b0cc2c61e0344e81a\AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:11:9-35
+	android:label
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:9:9-41
+	android:roundIcon
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:10:9-54
+	android:icon
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:8:9-43
+	android:allowBackup
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:7:9-35
+	android:theme
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:13:9-40
+activity#com.example.chess.MainActivity
+ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:14:9-22:20
+	android:screenOrientation
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:16:13-56
+	android:name
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:15:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:17:13-21:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:18:17-69
+	android:name
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:18:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:20:17-77
+	android:name
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml:20:27-74
+uses-sdk
+INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\9ebc8a792b827c7f113bcd1bfd7b3e0d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\9ebc8a792b827c7f113bcd1bfd7b3e0d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\a3b8c6502e2f6d552f6bf1a73eeceac0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\a3b8c6502e2f6d552f6bf1a73eeceac0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:recyclerview-v7:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\9c7d342f666b17e2567689b532fa21a0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\9c7d342f666b17e2567689b532fa21a0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\cec04ba9775014835d4a3a3fe3a28fa2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\cec04ba9775014835d4a3a3fe3a28fa2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\767157ffd1fa4b4a683706e7daf7aa0e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\767157ffd1fa4b4a683706e7daf7aa0e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\b41a5713b605e18f8036c9256d3a7fff\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\b41a5713b605e18f8036c9256d3a7fff\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\742fae95b8886dd5d13c74ef3a1c05bc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\742fae95b8886dd5d13c74ef3a1c05bc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\665d61ff4978c5ef6a3bbb6cb870b2b0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\665d61ff4978c5ef6a3bbb6cb870b2b0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\868db48ffcfcc12511bd4387db9212fb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\868db48ffcfcc12511bd4387db9212fb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\de5cdf9b91c539bfa35b3414b3a76ac1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\de5cdf9b91c539bfa35b3414b3a76ac1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\227ea2f43596a5205a25e3ece9915fce\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\227ea2f43596a5205a25e3ece9915fce\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\fb21256a7730205376ffa3579c91291d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\fb21256a7730205376ffa3579c91291d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\0c0f03fcf82134bbb60ace819694b907\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\0c0f03fcf82134bbb60ace819694b907\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\6ddd133ff1224e19a3261e50c31fa595\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\6ddd133ff1224e19a3261e50c31fa595\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\33b8ad7287c799c9b40804b8f6b4afd0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\33b8ad7287c799c9b40804b8f6b4afd0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\5ac6abce6db81b8f5dff5461f4193c5f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\5ac6abce6db81b8f5dff5461f4193c5f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\67b7c6024133f80b0cc2c61e0344e81a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\67b7c6024133f80b0cc2c61e0344e81a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\65f9462c067f57a2d6af1f9db1a9b36d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\65f9462c067f57a2d6af1f9db1a9b36d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\e6156345986cc6c8388b22fe3f5f54ca\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\e6156345986cc6c8388b22fe3f5f54ca\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\acc4469d8e41ea8d5f61514dcd30c3b7\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\acc4469d8e41ea8d5f61514dcd30c3b7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\ae9e089e0dc9b6073d1cbeb5d5b7d3ba\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\ae9e089e0dc9b6073d1cbeb5d5b7d3ba\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\91e95bf90c84e487cec4ff831616694d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\91e95bf90c84e487cec4ff831616694d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\ee8cd57c2a229e8c44d023cc48db0952\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\ee8cd57c2a229e8c44d023cc48db0952\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\bea8787d29320eb93015c10fc142a8f0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\bea8787d29320eb93015c10fc142a8f0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\dd095c710352dee10b71dbcd24c9e6dc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0-rc02] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\dd095c710352dee10b71dbcd24c9e6dc\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\27a6cf2d008300b8702f4920b330367e\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\27a6cf2d008300b8702f4920b330367e\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\4e3beaf69a9c81ac59fc38a6a59b98d8\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Aver\.gradle\caches\transforms-2\files-2.1\4e3beaf69a9c81ac59fc38a6a59b98d8\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Aver\Documents\GitHub\ChessOnline\Chess\app\src\main\AndroidManifest.xml
