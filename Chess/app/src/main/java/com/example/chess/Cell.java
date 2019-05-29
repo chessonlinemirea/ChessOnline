@@ -8,6 +8,7 @@ public class Cell {
     private int line;
     private int fieldColor;
     private boolean point;
+    private PointColorEnum pointColorEnum;
 
     public Cell(Piece piece, int column, int line) {
         this.piece = piece;
@@ -30,8 +31,18 @@ public class Cell {
         return point;
     }
 
-    public void setPoint(boolean point) {
-        this.point = point;
+    public PointColorEnum getPointColorEnum() {
+        return pointColorEnum;
+    }
+
+    public void setPoint(PointColorEnum pointColorEnum) {
+        this.point = true;
+        this.pointColorEnum = pointColorEnum;
+    }
+
+    public void deletePoint(){
+        this.point = false;
+        this.pointColorEnum = null;
     }
 
     public Cell(int column, int line) {
