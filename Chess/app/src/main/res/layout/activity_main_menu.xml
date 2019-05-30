@@ -68,23 +68,16 @@
         app:layout_constraintTop_toBottomOf="@+id/search" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="228dp"
-        android:layout_height="308dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/munchkin2" />
-
-    <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="304dp"
-        android:layout_height="69dp"
+        android:layout_width="273dp"
+        android:layout_height="56dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/manchkin_logo" />
+        app:srcCompat="@drawable/logo" />
 
     <Button
         android:id="@+id/button_play"
@@ -159,4 +152,14 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/imageView8"
         app:layout_constraintStart_toEndOf="@+id/playerName" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="131dp"
+        android:layout_height="206dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/chessimage" />
 </android.support.constraint.ConstraintLayout>

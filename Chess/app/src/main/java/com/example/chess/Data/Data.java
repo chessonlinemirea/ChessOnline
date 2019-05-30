@@ -293,7 +293,7 @@ public class Data {
 
     private static boolean setPointPawnSide(int column, int line){
         if (column >= 0 && line >= 0 && column < 8 && line < 8){
-            if (field.get(column).get(line).havePiece()){
+            if (field.get(column).get(line).havePiece() && field.get(column).get(line).getPiece().getColor() != tempPiece.getColor()){
                 field.get(column).get(line).setPoint(PointColorEnum.RED);
                 greenWay = true;
                 return true;
@@ -329,7 +329,6 @@ public class Data {
 
 
         removeGreenWay();
-        //checkGreenWay();
         AsyncTaskMove asyncTaskMove = new AsyncTaskMove(context, move);
         asyncTaskMove.execute();
     }
@@ -349,6 +348,7 @@ public class Data {
         piece.setLine(endLine);
         field.get(endColumn).get(endLine).setPiece(piece);
         columnsAdapter.update();
+        checkGreenWay();
     }
 
     public static void checkGreenWay(){

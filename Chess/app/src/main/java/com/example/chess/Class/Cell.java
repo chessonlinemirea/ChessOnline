@@ -38,8 +38,8 @@ public class Cell {
     }
 
     public void setPoint(PointColorEnum pointColorEnum) {
-        this.point = true;
         this.pointColorEnum = pointColorEnum;
+        this.point = true;
     }
 
     public void deletePoint(){

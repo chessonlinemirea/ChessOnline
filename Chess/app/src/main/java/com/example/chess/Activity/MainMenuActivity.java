@@ -150,7 +150,7 @@ public class MainMenuActivity extends AppCompatActivity
 
         bildRecyclerView(); //cборка листа
         timer = new Timer();
-        timer.schedule(new UpdateTimeTask(), 0, 10000);
+        timer.schedule(new UpdateTimeTask(), 0, 3000);
     }
     class UpdateTimeTask extends TimerTask {
 
