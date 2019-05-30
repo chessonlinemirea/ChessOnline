@@ -1,6 +1,8 @@
-package com.example.chess;
+package com.example.chess.Class;
 
 import android.graphics.Color;
+
+import com.example.chess.Enum.PointColorEnum;
 
 public class Cell {
     private Piece piece;

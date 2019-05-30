@@ -1,8 +1,12 @@
-package com.example.chess;
+package com.example.chess.Enum;
 
-public enum ColorEnum {
-    DARK("dark"),
-    LIGHT("light");
+public enum PieceEnum {
+    KING("king"),
+    QUEEN("queen"),
+    BISHOP("bishop"),
+    KNIGHT("knight"),
+    ROOK("rook"),
+    PAWN("pawn");
 
     private String title;
 
@@ -14,7 +18,7 @@ public enum ColorEnum {
         this.title = title;
     }
 
-    ColorEnum(String title) {
+    PieceEnum(String title) {
         this.title = title;
     }
 

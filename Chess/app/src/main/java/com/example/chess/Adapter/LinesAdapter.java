@@ -1,4 +1,4 @@
-package com.example.chess;
+package com.example.chess.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,6 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.example.chess.Class.Cell;
+import com.example.chess.Enum.PointColorEnum;
+import com.example.chess.R;
 
 import java.util.ArrayList;
 

@@ -1,19 +1,47 @@
-package com.example.chess;
+package com.example.chess.Data;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.chess.Activity.MainMenuActivity;
+import com.example.chess.AsyncTasks.AsyncTaskCheckInviteResult;
+import com.example.chess.AsyncTasks.AsyncTaskCheckIvite;
+import com.example.chess.AsyncTasks.AsyncTaskCheckMove;
+import com.example.chess.AsyncTasks.AsyncTaskMove;
+import com.example.chess.Class.Cell;
+import com.example.chess.Enum.ColorEnum;
+import com.example.chess.Class.Piece;
+import com.example.chess.Enum.PieceEnum;
+import com.example.chess.Enum.PointColorEnum;
+
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
+
+import static com.example.chess.Activity.MainMenuActivity.checkDialogInvite;
 
 public class Data {
     private static ArrayList<Piece> playerDark;
     private static ArrayList<Piece> playerLight;
     private static ArrayList<ArrayList<Cell>> field = new ArrayList<>();
     private static boolean greenWay;
+    public static boolean canMove;
     private static Piece tempPiece;
     private static ColorEnum colorEnum;
     static Context context;
+
+    public static boolean isCanMove() {
+        return canMove;
+    }
+
+    public static void setCanMove(boolean canMove) {
+        Data.canMove = canMove;
+    }
 
     public static void create(Context contextt)
     {
@@ -22,7 +50,10 @@ public class Data {
         createField();
         greenWay = false;
         tempPiece = null;
-        colorEnum = ColorEnum.DARK;
+        if(colorEnum == ColorEnum.LIGHT){
+            canMove = true;
+        }
+        Log.d("canMove", String.valueOf(canMove));
     }
 
     private static void createField(){
@@ -102,17 +133,19 @@ public class Data {
     public static void setGreenWay(int column, int line){
 //        Log.d("color", field.get(column).get(line).getPiece().getColor().toString());
 //        Log.d("color piece", colorEnum.toString());
-        if(!greenWay && field.get(column).get(line).havePiece() && field.get(column).get(line).getPiece().getColor() == colorEnum){
-            tempPiece = field.get(column).get(line).getPiece();
-            removeGreenWay();
-            setGreenWayPiece(column, line);
-        }
-        else if (greenWay){
-            if (field.get(column).get(line).isPoint()){
-                movePiece(tempPiece, column, line);
-            }
-            else {
+        if(canMove){
+            if(!greenWay && field.get(column).get(line).havePiece() && field.get(column).get(line).getPiece().getColor() == colorEnum){
+                tempPiece = field.get(column).get(line).getPiece();
                 removeGreenWay();
+                setGreenWayPiece(column, line);
+            }
+            else if (greenWay){
+                if (field.get(column).get(line).isPoint()){
+                    movePiece(tempPiece, column, line);
+                }
+                else {
+                    removeGreenWay();
+                }
             }
         }
     }
@@ -271,20 +304,42 @@ public class Data {
     }
 
     public static void movePiece(Piece piece, int column, int line){
-        field.get(piece.getColumn()).get(piece.getLine()).deletePiece();
-        piece.setColumn(column);
-        piece.setLine(line);
-        field.get(column).get(line).setPiece(piece);
+        int startColumn = piece.getColumn();
+        int startLine = piece.getLine();
+        int endColumn = column;
+        int endLine = line;
+        String move = "";
+        move += startColumn + " ";
+        move += startLine + " ";
+        move += endColumn + " ";
+        move += endLine;
 
-        if (colorEnum == ColorEnum.DARK){
-            colorEnum = ColorEnum.LIGHT;
-        }
-        else if (colorEnum == ColorEnum.LIGHT){
-            colorEnum = ColorEnum.DARK;
-        }
+        field.get(startColumn).get(startLine).deletePiece();
+        piece.setColumn(endColumn);
+        piece.setLine(endLine);
+        field.get(endColumn).get(endLine).setPiece(piece);
+
 
         removeGreenWay();
-        checkGreenWay();
+        //checkGreenWay();
+        AsyncTaskMove asyncTaskMove = new AsyncTaskMove(context, move);
+        asyncTaskMove.execute();
+    }
+
+    public static void moveOpponent(String move){
+        String splitMove[] = move.split(" ");
+        int startColumn = Integer.valueOf(splitMove[0]);
+        int startLine = Integer.valueOf(splitMove[1]);
+        int endColumn = Integer.valueOf(splitMove[2]);
+        int endLine = Integer.valueOf(splitMove[3]);
+        Log.d("Split Move", startColumn + " | " + startLine + " | " + endColumn + " | " + endLine);
+
+        Piece piece = field.get(startColumn).get(endColumn).getPiece();
+
+        field.get(startColumn).get(startLine).deletePiece();
+        piece.setColumn(endColumn);
+        piece.setLine(endLine);
+        field.get(endColumn).get(endLine).setPiece(piece);
     }
 
     public static void checkGreenWay(){
@@ -446,6 +501,10 @@ public class Data {
             }
         }
         return false;
+    }
+
+    public static void setColorEnum(ColorEnum colorEnum) {
+        Data.colorEnum = colorEnum;
     }
 
     public void checkShah(){

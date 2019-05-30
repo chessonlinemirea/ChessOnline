@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3B8D84</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
     <color name="white">#3C3F41</color>
     <color name="black">#000000</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B1B</color>
+    <color name="gray">#413939</color>
+    <color name="munchkin">#f9d37a</color>
+    <color name="munchkin_dark">#8e2103</color>
 </resources>

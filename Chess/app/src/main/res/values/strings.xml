@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Chess</string>
+    <string name="vibration">Vibration</string>
+    <string name="sound">Sound</string>
+    <string name="settings">Settings</string>
+    <string name="btnRegistr">Sign up</string>
+    <string name="txtLogin">Write new login</string>
+    <string name="txtPassword1">Write password</string>
+    <string name="txtPassword2">Write password again</string>
+    <string name="btnSignIn">Sign in</string>
+    <string name="exitFromInventory">Exit</string>
+    <string name="char_hat">Имя игрока</string>
+    <string name="list_hat">Можно надеть</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rules">for more detailed information about the rules visit the website</string>
+    <string name="ButtonWeb">WebSite</string>
+    <string name="username">Username</string>
+    <string name="textRadioButton1">Герой</string>
+    <string name="textRadioButton2">Героиня</string>
+    <string name="dialogMenuSettingText">Settings</string>
+    <string name="dialogMenuExitText">Exit</string>
+    <string name="battleDialogText">На вас напали!!!</string>
+    <string name="name_of_monster">Name of Monster</string>
+    <string name="lvl_of_monster">lvl of monster</string>
+    <string name="escape">Убежать</string>
+    <string name="battle">Атаковать</string>
+    <string name="strength">Ваша сила на данный момент</string>
 </resources>
