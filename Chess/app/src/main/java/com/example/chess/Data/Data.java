@@ -334,7 +334,7 @@ public class Data {
         int endLine = Integer.valueOf(splitMove[3]);
         Log.d("Split Move", startColumn + " | " + startLine + " | " + endColumn + " | " + endLine);
 
-        Piece piece = field.get(startColumn).get(endColumn).getPiece();
+        Piece piece = field.get(startColumn).get(startLine).getPiece();
 
         field.get(startColumn).get(startLine).deletePiece();
         piece.setColumn(endColumn);
