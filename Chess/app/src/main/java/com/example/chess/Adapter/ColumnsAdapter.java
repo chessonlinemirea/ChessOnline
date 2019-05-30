@@ -23,6 +23,10 @@ public class ColumnsAdapter extends RecyclerView.Adapter<ColumnsAdapter.ColumnVi
 
     private final static String FILE_NAME = "content.txt";
 
+    public void update(){
+        notifyDataSetChanged();
+    }
+
 
 
     @NonNull

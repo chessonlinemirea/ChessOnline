@@ -3,10 +3,12 @@ package com.example.chess.Data;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Looper;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.chess.Activity.MainMenuActivity;
+import com.example.chess.Adapter.ColumnsAdapter;
 import com.example.chess.AsyncTasks.AsyncTaskCheckInviteResult;
 import com.example.chess.AsyncTasks.AsyncTaskCheckIvite;
 import com.example.chess.AsyncTasks.AsyncTaskCheckMove;
@@ -34,6 +36,7 @@ public class Data {
     private static Piece tempPiece;
     private static ColorEnum colorEnum;
     static Context context;
+    private static ColumnsAdapter columnsAdapter;
 
     public static boolean isCanMove() {
         return canMove;
@@ -54,6 +57,11 @@ public class Data {
             canMove = true;
         }
         Log.d("canMove", String.valueOf(canMove));
+    }
+
+    public static void bildRecyclerView(RecyclerView columns) {
+        columnsAdapter = new ColumnsAdapter();
+        columns.setAdapter(columnsAdapter);
     }
 
     private static void createField(){
@@ -340,6 +348,7 @@ public class Data {
         piece.setColumn(endColumn);
         piece.setLine(endLine);
         field.get(endColumn).get(endLine).setPiece(piece);
+        columnsAdapter.update();
     }
 
     public static void checkGreenWay(){

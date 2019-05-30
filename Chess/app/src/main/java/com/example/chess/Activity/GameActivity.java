@@ -23,7 +23,6 @@ import static com.example.chess.Data.Data.canMove;
 public class GameActivity extends AppCompatActivity {
 
     private RecyclerView columns;
-    private ColumnsAdapter columnsAdapter;
     Timer timer;
 
     @Override
@@ -37,14 +36,19 @@ public class GameActivity extends AppCompatActivity {
         Data.create(getApplicationContext());
         bildRecyclerView();
         timer = new Timer();
-        timer.schedule(new UpdateTimeTask(), 0, 10000);
+        timer.schedule(new UpdateTimeTask(), 0, 2000);
+    }
+
+    @Override
+    protected void onDestroy() {
+        timer.cancel();
+        super.onDestroy();
     }
 
     public void bildRecyclerView() {
         LinearLayoutManager layoutManagerPlayers = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         columns.setLayoutManager(layoutManagerPlayers);
-        columnsAdapter = new ColumnsAdapter();
-        columns.setAdapter(columnsAdapter);
+        Data.bildRecyclerView(columns);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(columns.getContext(),
                 layoutManagerPlayers.getOrientation());
         columns.addItemDecoration(dividerItemDecoration);
