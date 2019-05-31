@@ -1,17 +1,11 @@
 package com.example.chess.Data;
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.Looper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.chess.Activity.MainMenuActivity;
 import com.example.chess.Adapter.ColumnsAdapter;
-import com.example.chess.AsyncTasks.AsyncTaskCheckInviteResult;
-import com.example.chess.AsyncTasks.AsyncTaskCheckIvite;
-import com.example.chess.AsyncTasks.AsyncTaskCheckMove;
 import com.example.chess.AsyncTasks.AsyncTaskMove;
 import com.example.chess.Class.Cell;
 import com.example.chess.Enum.ColorEnum;
@@ -20,12 +14,6 @@ import com.example.chess.Enum.PieceEnum;
 import com.example.chess.Enum.PointColorEnum;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
-
-import static com.example.chess.Activity.MainMenuActivity.checkDialogInvite;
 
 public class Data {
     private static ArrayList<Piece> playerDark;
@@ -37,6 +25,8 @@ public class Data {
     private static ColorEnum colorEnum;
     static Context context;
     private static ColumnsAdapter columnsAdapter;
+    private static boolean isShah;
+    private static boolean isMat;
 
     public static boolean isCanMove() {
         return canMove;
@@ -57,6 +47,8 @@ public class Data {
             canMove = true;
         }
         Log.d("canMove", String.valueOf(canMove));
+        isShah = false;
+        isMat = false;
     }
 
     public static void bildRecyclerView(RecyclerView columns) {
@@ -348,134 +340,206 @@ public class Data {
         piece.setLine(endLine);
         field.get(endColumn).get(endLine).setPiece(piece);
         columnsAdapter.update();
-        checkGreenWay();
+        checkShah();
+        checkMat();
+
+        if (isShah){
+            Toast.makeText(context, "Вам шах", Toast.LENGTH_LONG);
+        }
+        else if (isMat){
+            Toast.makeText(context, "Вам шах и мат", Toast.LENGTH_LONG);
+        }
+        isShah = false;
+        isMat = false;
+
+        clearDeath();
     }
 
-    public static void checkGreenWay(){
+    public static void clearDeath(){
+        for (Piece piece : playerDark){
+            piece.setDeath(false);
+        }
+        for (Piece piece : playerLight){
+            piece.setDeath(false);
+        }
+    }
+
+    private static void checkMat() {
+        Piece check = null;
+        if(colorEnum == ColorEnum.LIGHT){
+            for (Piece piece : playerLight){
+                if (piece.getPieceEnum() == PieceEnum.KING){
+                    check = piece;
+                }
+            }
+        }
+        else if(colorEnum == ColorEnum.DARK){
+            for (Piece piece : playerDark){
+                if (piece.getPieceEnum() == PieceEnum.KING){
+                    check = piece;
+                }
+            }
+        }
+        isMat = checkKing(check.getColumn(), check.getLine());
+    }
+
+    private static boolean checkKing(int column, int line){
+        boolean temp = true;
+
+        if(!field.get(column + 1).get(line + 1).getPiece().isDeath()){
+            temp = false;
+        }
+        if(!field.get(column - 1).get(line - 1).getPiece().isDeath()){
+            temp = false;
+        }
+        if(!field.get(column - 1).get(line + 1).getPiece().isDeath()){
+            temp = false;
+        }
+        if(!field.get(column + 1).get(line - 1).getPiece().isDeath()){
+            temp = false;
+        }
+
+        if(!field.get(column).get(line + 1).getPiece().isDeath()){
+            temp = false;
+        }
+        if(!field.get(column).get(line - 1).getPiece().isDeath()){
+            temp = false;
+        }
+        if(!field.get(column + 1).get(line).getPiece().isDeath()){
+            temp = false;
+        }
+        if(!field.get(column - 1).get(line).getPiece().isDeath()){
+            temp = false;
+        }
+
+        return temp;
+    }
+
+    public static void checkShah(){
 //        Log.d("color", field.get(column).get(line).getPiece().getColor().toString());
 //        Log.d("color piece", colorEnum.toString());
 
         if (colorEnum == ColorEnum.LIGHT){
             for (int i = 0; i < playerDark.size(); i++) {
-                checkGreenWayPiece(playerDark.get(i).getColumn(), playerDark.get(i).getLine());
+                checkShahPiece(playerDark.get(i).getColumn(), playerDark.get(i).getLine());
             }
         }
         else if (colorEnum == ColorEnum.DARK){
             for (int i = 0; i < playerLight.size(); i++) {
-                checkGreenWayPiece(playerLight.get(i).getColumn(), playerLight.get(i).getLine());
+                checkShahPiece(playerLight.get(i).getColumn(), playerLight.get(i).getLine());
             }
         }
     }
 
-    private static void checkGreenWayPiece(int column, int line){
+    private static void checkShahPiece(int column, int line){
         Log.d("check", colorEnum.toString());
         switch (field.get(column).get(line).getPiece().getPieceEnum()){
             case PAWN:
                 //Log.d("check", "Pawn");
-                checkGreenWayPawn(column,line);
+                checkShahPawn(column,line);
                 break;
             case ROOK:
                 //Log.d("check", "Rook");
-                checkGreenWayRook(column, line);
+                checkShahRook(column, line);
                 break;
             case BISHOP:
                 //Log.d("check", "Bishop");
-                checkGreenWayBishop(column, line);
+                checkShahBishop(column, line);
                 break;
             case KNIGHT:
                 //Log.d("check", "Knight");
-                checkGreenWayKnight(column, line);
+                checkShahKnight(column, line);
                 break;
             case KING:
                 //Log.d("check", "King");
-                checkGreenWayKing(column, line);
+                checkShahKing(column, line);
                 break;
             case QUEEN:
                 //Log.d("check", "Queen");
-                checkGreenWayQueen(column, line);
+                checkShahQueen(column, line);
                 break;
         }
     }
 
-    private static void checkGreenWayPawn(int column, int line){
+    private static void checkShahPawn(int column, int line){
         if(field.get(column).get(line).getPiece().getColor() == ColorEnum.DARK){
-            checkPointPawnSide(column - 1, line + 1);
-            checkPointPawnSide(column + 1, line + 1);
+            checkShahPawnSide(column - 1, line + 1);
+            checkShahPawnSide(column + 1, line + 1);
         }
         else if(field.get(column).get(line).getPiece().getColor() == ColorEnum.LIGHT){
-            checkPointPawnSide(column - 1, line - 1);
-            checkPointPawnSide(column + 1, line - 1);
+            checkShahPawnSide(column - 1, line - 1);
+            checkShahPawnSide(column + 1, line - 1);
         }
     }
 
-    private static void checkGreenWayRook(int column, int line){
+    private static void checkShahRook(int column, int line){
         int i = 1;
-        while (checkPoint(column, line + i)){
+        while (checkShahCell(column, line + i)){
             i++;
         }
         i = 1;
-        while (checkPoint(column, line - i)){
+        while (checkShahCell(column, line - i)){
             i++;
         }
         i = 1;
-        while (checkPoint(column - i, line)){
+        while (checkShahCell(column - i, line)){
             i++;
         }
         i = 1;
-        while (checkPoint(column + i, line)){
+        while (checkShahCell(column + i, line)){
             i++;
         }
     }
 
-    private static void checkGreenWayBishop(int column, int line){
+    private static void checkShahBishop(int column, int line){
         int i = 1;
-        while (checkPoint(column + i, line + i)){
+        while (checkShahCell(column + i, line + i)){
             i++;
         }
         i = 1;
-        while (checkPoint(column - i, line + i)){
+        while (checkShahCell(column - i, line + i)){
             i++;
         }
         i = 1;
-        while (checkPoint(column - i, line - i)){
+        while (checkShahCell(column - i, line - i)){
             i++;
         }
         i = 1;
-        while (checkPoint(column + i, line - i)){
+        while (checkShahCell(column + i, line - i)){
             i++;
         }
     }
 
-    private static void checkGreenWayKnight(int column, int line){
-        checkPoint(column + 1, line + 2);
-        checkPoint(column - 1, line - 2);
-        checkPoint(column + 1, line - 2);
-        checkPoint(column - 1, line + 2);
+    private static void checkShahKnight(int column, int line){
+        checkShahCell(column + 1, line + 2);
+        checkShahCell(column - 1, line - 2);
+        checkShahCell(column + 1, line - 2);
+        checkShahCell(column - 1, line + 2);
 
-        checkPoint(column + 2, line + 1);
-        checkPoint(column - 2, line - 1);
-        checkPoint(column + 2, line - 1);
-        checkPoint(column - 2, line + 1);
+        checkShahCell(column + 2, line + 1);
+        checkShahCell(column - 2, line - 1);
+        checkShahCell(column + 2, line - 1);
+        checkShahCell(column - 2, line + 1);
     }
 
-    private static void checkGreenWayKing(int column, int line){
-        checkPoint(column + 1, line + 1);
-        checkPoint(column - 1, line - 1);
-        checkPoint(column - 1, line + 1);
-        checkPoint(column + 1, line - 1);
+    private static void checkShahKing(int column, int line){
+        checkShahCell(column + 1, line + 1);
+        checkShahCell(column - 1, line - 1);
+        checkShahCell(column - 1, line + 1);
+        checkShahCell(column + 1, line - 1);
 
-        checkPoint(column, line + 1);
-        checkPoint(column, line - 1);
-        checkPoint(column + 1, line);
-        checkPoint(column - 1, line);
+        checkShahCell(column, line + 1);
+        checkShahCell(column, line - 1);
+        checkShahCell(column + 1, line);
+        checkShahCell(column - 1, line);
     }
 
-    private static void checkGreenWayQueen(int column, int line){
-        checkGreenWayBishop(column, line);
-        checkGreenWayRook(column, line);
+    private static void checkShahQueen(int column, int line){
+        checkShahBishop(column, line);
+        checkShahRook(column, line);
     }
 
-    private static boolean checkPoint(int column, int line){
+    private static boolean checkShahCell(int column, int line){
         if (column >= 0 && line >= 0 && column < 8 && line < 8){
             if (!field.get(column).get(line).havePiece()){
                 return true;
@@ -483,9 +547,11 @@ public class Data {
             else if (colorEnum == field.get(column).get(line).getPiece().getColor()){
                 //Log.d(field.get(column).get(line).getPiece().getColor().toString(), column + " " + line);
                 //field.get(column).get(line).setPoint(PointColorEnum.RED);
+                field.get(column).get(line).getPiece().setDeath(true);
                 if(field.get(column).get(line).getPiece().getPieceEnum() == PieceEnum.KING)
                 {
-                    Toast.makeText(context, "Шах", Toast.LENGTH_LONG).show();
+                    isShah = true;
+                    //Toast.makeText(context, "Шах", Toast.LENGTH_LONG).show();
                 }
                 return false;
             }
@@ -502,10 +568,16 @@ public class Data {
         return false;
     }
 
-    private static boolean checkPointPawnSide(int column, int line){
+    private static boolean checkShahPawnSide(int column, int line){
         if (column >= 0 && line >= 0 && column < 8 && line < 8){
             if (field.get(column).get(line).havePiece()){
-                field.get(column).get(line).setPoint(PointColorEnum.RED);
+                //field.get(column).get(line).setPoint(PointColorEnum.RED);
+                field.get(column).get(line).getPiece().setDeath(true);
+                if(field.get(column).get(line).getPiece().getPieceEnum() == PieceEnum.KING)
+                {
+                    isShah = true;
+                    //Toast.makeText(context, "Шах", Toast.LENGTH_LONG).show();
+                }
                 return true;
             }
         }
@@ -516,7 +588,4 @@ public class Data {
         Data.colorEnum = colorEnum;
     }
 
-    public void checkShah(){
-
-    }
 }

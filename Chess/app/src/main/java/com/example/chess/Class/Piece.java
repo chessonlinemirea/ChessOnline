@@ -10,6 +10,15 @@ public class Piece {
     private ColorEnum color;
     private int id;
     private boolean isAlive;
+    private boolean death;
+
+    public boolean isDeath() {
+        return death;
+    }
+
+    public void setDeath(boolean death) {
+        this.death = death;
+    }
 
     public boolean isAlive() {
         return isAlive;
@@ -26,6 +35,7 @@ public class Piece {
         this.color = color;
         this.id = id;
         isAlive = true;
+        death = false;
     }
 
     public int getColumn() {
