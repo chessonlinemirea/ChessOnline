@@ -28,7 +28,7 @@ public class Data {
     private static boolean isShah;
     private static boolean isMat;
     private static boolean outPutRedLine = false;
-    private static boolean outPutRedLineShah = true;
+    private static boolean outPutRedLineShah = false;
 
     public static boolean isCanMove() {
         return canMove;
@@ -324,6 +324,8 @@ public class Data {
         piece.setColumn(endColumn);
         piece.setLine(endLine);
         field.get(endColumn).get(endLine).setPiece(piece);
+
+        checkShahPiece(piece.getColumn(), piece.getLine());
 
 
         removeGreenWay();
