@@ -189,7 +189,7 @@ public class Data {
     private static void setGreenWayPiece(int column, int line){
         switch (field.get(column).get(line).getPiece().getPieceEnum()){
             case PAWN:
-                setGreenWayPawn(reverse(column),reverse(line));
+                setGreenWayPawn(column,line);
                 break;
             case ROOK:
                 setGreenWayRook(column, line);
@@ -209,19 +209,37 @@ public class Data {
         }
     }
     private static void setGreenWayPawn(int column, int line){
-        if(field.get(column).get(line).getPiece().getColor() == ColorEnum.DARK){
-            if (setPointPawn(column, line + 1) && line == 1){
-                setPointPawn(column, line + 2);
+        if(colorEnum == ColorEnum.LIGHT){
+            if(field.get(column).get(line).getPiece().getColor() == ColorEnum.DARK){
+                if (setPointPawn(column, line + 1) && line == 1){
+                    setPointPawn(column, line + 2);
+                }
+                setPointPawnSide(column - 1, line + 1);
+                setPointPawnSide(column + 1, line + 1);
             }
-            setPointPawnSide(column - 1, line + 1);
-            setPointPawnSide(column + 1, line + 1);
+            else if(field.get(column).get(line).getPiece().getColor() == ColorEnum.LIGHT){
+                if (setPointPawn(column, line - 1) && line == 6){
+                    setPointPawn(column, line - 2);
+                }
+                setPointPawnSide(column - 1, line - 1);
+                setPointPawnSide(column + 1, line - 1);
+            }
         }
-        else if(field.get(column).get(line).getPiece().getColor() == ColorEnum.LIGHT){
-            if (setPointPawn(column, line - 1) && line == 6){
-                setPointPawn(column, line - 2);
+        else {
+            if(field.get(column).get(line).getPiece().getColor() == ColorEnum.DARK){
+                if (setPointPawn(column, line - 1) && line == 6){
+                    setPointPawn(column, line - 2);
+                }
+                setPointPawnSide(column - 1, line - 1);
+                setPointPawnSide(column + 1, line - 1);
             }
-            setPointPawnSide(column - 1, line - 1);
-            setPointPawnSide(column + 1, line - 1);
+            else if(field.get(column).get(line).getPiece().getColor() == ColorEnum.LIGHT){
+                if (setPointPawn(column, line + 1) && line == 1){
+                    setPointPawn(column, line + 2);
+                }
+                setPointPawnSide(column - 1, line + 1);
+                setPointPawnSide(column + 1, line + 1);
+            }
         }
     }
 
@@ -348,8 +366,21 @@ public class Data {
         int startLine = piece.getLine();
         int endColumn = column;
         int endLine = line;
+
+
+        field.get(startColumn).get(startLine).deletePiece();
+        piece.setColumn(endColumn);
+        piece.setLine(endLine);
+        field.get(endColumn).get(endLine).setPiece(piece);
+
+        if (field.get(endColumn).get(endLine).havePiece() && field.get(endColumn).get(endLine).getPiece().getPieceEnum() == PieceEnum.KING){
+            Toast.makeText(context, "Вы победили", Toast.LENGTH_LONG).show();
+        }
+
         if (colorEnum == ColorEnum.DARK){
+            startColumn = reverse(startColumn);
             startLine = reverse(startLine);
+            endColumn = reverse(endColumn);
             endLine = reverse(endLine);
         }
         String move = "";
@@ -358,14 +389,6 @@ public class Data {
         move += endColumn + " ";
         move += endLine;
 
-        if (field.get(endColumn).get(endLine).havePiece() && field.get(endColumn).get(endLine).getPiece().getPieceEnum() == PieceEnum.KING){
-            Toast.makeText(context, "Вы победили", Toast.LENGTH_LONG).show();
-        }
-
-        field.get(startColumn).get(startLine).deletePiece();
-        piece.setColumn(endColumn);
-        piece.setLine(endLine);
-        field.get(endColumn).get(endLine).setPiece(piece);
 
 
         removeGreenWay();
@@ -380,7 +403,9 @@ public class Data {
         int endColumn = Integer.valueOf(splitMove[2]);
         int endLine = Integer.valueOf(splitMove[3]);
         if (colorEnum == ColorEnum.DARK){
+            startColumn = reverse(startColumn);
             startLine = reverse(startLine);
+            endColumn = reverse(endColumn);
             endLine = reverse(endLine);
         }
         Log.d("Split Move", startColumn + " | " + startLine + " | " + endColumn + " | " + endLine);
@@ -480,7 +505,12 @@ public class Data {
         }
         else if (colorEnum == ColorEnum.DARK){
             for (int i = 0; i < playerLight.size(); i++) {
-                checkShahPiece(playerLight.get(i).getColumn(), playerLight.get(i).getLine());
+                //try {
+                    checkShahPiece(playerLight.get(i).getColumn(), playerLight.get(i).getLine());
+//                }
+//                catch (NullPointerException e){
+//                    Log.d("ERRRRRRRRRROR", playerLight.get(i).getColumn() + " " + playerLight.get(i).getLine());
+//                }
             }
         }
     }
@@ -490,7 +520,7 @@ public class Data {
         switch (field.get(column).get(line).getPiece().getPieceEnum()){
             case PAWN:
                 //Log.d("check", "Pawn");
-                checkShahPawn(reverse(column),reverse(line));
+                checkShahPawn(column, line);
                 break;
             case ROOK:
                 //Log.d("check", "Rook");
@@ -516,13 +546,25 @@ public class Data {
     }
 
     private static void checkShahPawn(int column, int line){
-        if(field.get(column).get(line).getPiece().getColor() == ColorEnum.DARK){
-            checkShahPawnSide(column - 1, line + 1);
-            checkShahPawnSide(column + 1, line + 1);
+        if(colorEnum == ColorEnum.LIGHT){
+            if(field.get(column).get(line).getPiece().getColor() == ColorEnum.DARK){
+                checkShahPawnSide(column - 1, line + 1);
+                checkShahPawnSide(column + 1, line + 1);
+            }
+            else if(field.get(column).get(line).getPiece().getColor() == ColorEnum.LIGHT){
+                checkShahPawnSide(column - 1, line - 1);
+                checkShahPawnSide(column + 1, line - 1);
+            }
         }
-        else if(field.get(column).get(line).getPiece().getColor() == ColorEnum.LIGHT){
-            checkShahPawnSide(column - 1, line - 1);
-            checkShahPawnSide(column + 1, line - 1);
+        else {
+            if(field.get(column).get(line).getPiece().getColor() == ColorEnum.DARK){
+                checkShahPawnSide(column - 1, line - 1);
+                checkShahPawnSide(column + 1, line - 1);
+            }
+            else if(field.get(column).get(line).getPiece().getColor() == ColorEnum.LIGHT){
+                checkShahPawnSide(column - 1, line + 1);
+                checkShahPawnSide(column + 1, line + 1);
+            }
         }
     }
 
