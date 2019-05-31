@@ -685,6 +685,7 @@ public class Data {
 
             if (field.get(column).get(line).havePiece() && colorEnum == field.get(column).get(line).getPiece().getColor()){
                 if (outPutRedLineShah){
+                    Log.d("Set red point shah", tempPieceRedPoint.getColumn() + " " + tempPieceRedPoint.getLine() + " " + tempPieceRedPoint.toString() + " " + column + " " + line);
                     field.get(column).get(line).setPoint(PointColorEnum.RED);
                 }
                 field.get(column).get(line).getPiece().setDeath(true);
