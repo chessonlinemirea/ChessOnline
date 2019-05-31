@@ -27,6 +27,7 @@ public class Data {
     private static ColumnsAdapter columnsAdapter;
     private static boolean isShah;
     private static boolean isMat;
+    private static boolean redLine = false;
 
     public static boolean isCanMove() {
         return canMove;
@@ -314,6 +315,10 @@ public class Data {
         move += endColumn + " ";
         move += endLine;
 
+        if (field.get(endColumn).get(endLine).havePiece() && field.get(endColumn).get(endLine).getPiece().getPieceEnum() == PieceEnum.KING){
+            Toast.makeText(context, "Вы победили", Toast.LENGTH_LONG).show();
+        }
+
         field.get(startColumn).get(startLine).deletePiece();
         piece.setColumn(endColumn);
         piece.setLine(endLine);
@@ -333,6 +338,9 @@ public class Data {
         int endLine = Integer.valueOf(splitMove[3]);
         Log.d("Split Move", startColumn + " | " + startLine + " | " + endColumn + " | " + endLine);
 
+        if (field.get(endColumn).get(endLine).havePiece() && field.get(endColumn).get(endLine).getPiece().getPieceEnum() == PieceEnum.KING){
+            Toast.makeText(context, "Вы проиграли", Toast.LENGTH_LONG).show();
+        }
         Piece piece = field.get(startColumn).get(startLine).getPiece();
 
         field.get(startColumn).get(startLine).deletePiece();
@@ -341,16 +349,15 @@ public class Data {
         field.get(endColumn).get(endLine).setPiece(piece);
         columnsAdapter.update();
         checkShah();
-        checkMat();
 
         if (isShah){
             Toast.makeText(context, "Вам шах", Toast.LENGTH_LONG);
         }
-        else if (isMat){
+        /*else if (isMat){
             Toast.makeText(context, "Вам шах и мат", Toast.LENGTH_LONG);
-        }
+        }*/
         isShah = false;
-        isMat = false;
+        //isMat = false;
 
         clearDeath();
     }
@@ -541,7 +548,9 @@ public class Data {
 
     private static boolean checkShahCell(int column, int line){
         if (column >= 0 && line >= 0 && column < 8 && line < 8){
-            field.get(column).get(line).setPoint(PointColorEnum.RED);
+            if (redLine) {
+                field.get(column).get(line).setPoint(PointColorEnum.RED);
+            }
             if (!field.get(column).get(line).havePiece()){
                 return true;
             }
@@ -571,7 +580,10 @@ public class Data {
 
     private static boolean checkShahPawnSide(int column, int line){
         if (column >= 0 && line >= 0 && column < 8 && line < 8){
-            field.get(column).get(line).setPoint(PointColorEnum.RED);
+            if (redLine) {
+                field.get(column).get(line).setPoint(PointColorEnum.RED);
+            }
+
             if (field.get(column).get(line).havePiece()){
                 //field.get(column).get(line).setPoint(PointColorEnum.RED);
                 field.get(column).get(line).getPiece().setDeath(true);
