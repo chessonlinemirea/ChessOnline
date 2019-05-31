@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.chess.Adapter.ColumnsAdapter;
+import com.example.chess.AsyncTasks.AsyncTaskEndGame;
 import com.example.chess.AsyncTasks.AsyncTaskMove;
 import com.example.chess.Class.Cell;
 import com.example.chess.Enum.ColorEnum;
@@ -381,7 +382,9 @@ public class Data {
         field.get(endColumn).get(endLine).setPiece(piece);
 
         if (field.get(endColumn).get(endLine).havePiece() && field.get(endColumn).get(endLine).getPiece().getPieceEnum() == PieceEnum.KING){
-            Toast.makeText(context, "Вы победили", Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, "Вы победили", Toast.LENGTH_LONG).show();
+            AsyncTaskEndGame asyncTaskEndGame = new AsyncTaskEndGame(context, true);
+            asyncTaskEndGame.execute();
         }
 
         if (colorEnum == ColorEnum.DARK){
@@ -418,7 +421,9 @@ public class Data {
         Log.d("Split Move", startColumn + " | " + startLine + " | " + endColumn + " | " + endLine);
 
         if (field.get(endColumn).get(endLine).havePiece() && field.get(endColumn).get(endLine).getPiece().getPieceEnum() == PieceEnum.KING){
-            Toast.makeText(context, "Вы проиграли", Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, "Вы проиграли", Toast.LENGTH_LONG).show();
+            AsyncTaskEndGame asyncTaskEndGame = new AsyncTaskEndGame(context, false);
+            asyncTaskEndGame.execute();
         }
         Piece piece = field.get(startColumn).get(startLine).getPiece();
 
@@ -427,7 +432,7 @@ public class Data {
         piece.setLine(endLine);
         field.get(endColumn).get(endLine).setPiece(piece);
         columnsAdapter.update();
-        checkShah();
+        //checkShah();
 
 //        if (isShah){
 //            Toast.makeText(context, "Вам шах", Toast.LENGTH_LONG);

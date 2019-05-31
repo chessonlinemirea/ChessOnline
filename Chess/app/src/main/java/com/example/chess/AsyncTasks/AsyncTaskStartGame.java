@@ -26,18 +26,18 @@ import java.util.Map;
 
 import static com.example.chess.Activity.MainMenuActivity.checkPlay;
 
-public class AsyncTaskCheckColor extends AsyncTask<String, String, String> {
+public class AsyncTaskStartGame extends AsyncTask<String, String, String> {
     private String  answerHTTP;
 
     Context context;
     Activity activity;
 
-    public AsyncTaskCheckColor(Context context, Activity activity) {
+    public AsyncTaskStartGame(Context context, Activity activity) {
         this.context = context;
         this.activity = activity;
     }
 
-    String server = "http://jws-app-chess.7e14.starter-us-west-2.openshiftapps.com/api/checkcolor";
+    String server = "http://jws-app-chess.7e14.starter-us-west-2.openshiftapps.com/api/startgame";
 
     @Override
     protected void onPreExecute() {
@@ -47,7 +47,8 @@ public class AsyncTaskCheckColor extends AsyncTask<String, String, String> {
     @Override
     protected String doInBackground(String... params) {
         HashMap<String,String> postDataParams = new HashMap<>();
-        postDataParams.put("login", PlayerInstances.getPlayer().getName());
+        postDataParams.put("id1", String.valueOf(PlayerInstances.getPlayer().getId()));
+        postDataParams.put("id2", String.valueOf(PlayerInstances.getOpponent(0).getId()));
         answerHTTP = performPostCall(server,postDataParams);
         Log.d("CheckColor",answerHTTP);
         return null;

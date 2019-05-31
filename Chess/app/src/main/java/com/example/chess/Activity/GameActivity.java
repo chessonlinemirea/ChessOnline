@@ -8,8 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.chess.Adapter.ColumnsAdapter;
-import com.example.chess.AsyncTasks.AsyncTaskCheckColor;
 import com.example.chess.AsyncTasks.AsyncTaskCheckMove;
 import com.example.chess.Data.Data;
 import com.example.chess.R;

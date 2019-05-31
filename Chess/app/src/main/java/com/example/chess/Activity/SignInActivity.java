@@ -83,8 +83,11 @@ public class SignInActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             Toast toast = Toast.makeText(getApplicationContext(),answerHTTP,Toast.LENGTH_SHORT);
-            if (Integer.valueOf(answerHTTP)==-1){
+            if (answerHTTP.equals("-1")){
                 Toast.makeText(getApplicationContext(), "Неправельный логин или пароль", Toast.LENGTH_LONG).show();
+            }
+            else if (answerHTTP.equals("0")){
+                Toast.makeText(getApplicationContext(), "Игрок уже в сети", Toast.LENGTH_LONG).show();
             }
             else{
                 PlayerInstances.addPlayer(new Player(a ,Integer.valueOf(answerHTTP)));

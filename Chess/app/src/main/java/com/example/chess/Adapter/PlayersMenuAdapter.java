@@ -67,6 +67,7 @@ public class PlayersMenuAdapter extends RecyclerView.Adapter<PlayersMenuAdapter.
         TextView listNames;
         TextView listStatus;
         ImageView plus;
+        ImageView minus;
 
         public PlayerViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
@@ -74,6 +75,7 @@ public class PlayersMenuAdapter extends RecyclerView.Adapter<PlayersMenuAdapter.
             listNames = itemView.findViewById(R.id.tv_name);
             listStatus = itemView.findViewById(R.id.tv_status);
             plus = itemView.findViewById(R.id.imageView_plus);
+            minus = itemView.findViewById(R.id.imageView_minus);
 
             plus.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -98,6 +100,22 @@ public class PlayersMenuAdapter extends RecyclerView.Adapter<PlayersMenuAdapter.
                     }
                 }
             });
+
+//            plus.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Log.d("minus", "click");
+//                    if(MenuPlayers.i)
+//
+//                    //isPlay(position);
+//                    if (listener != null){
+//                        int position = getAdapterPosition();
+//                        if (position != RecyclerView.NO_POSITION){
+//                            listener.onItemClick(position);
+//                        }
+//                    }
+//                }
+//            });
         }
 
         void bind(MenuPlayer plaer){

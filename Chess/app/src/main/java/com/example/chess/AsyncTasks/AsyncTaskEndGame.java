@@ -1,11 +1,13 @@
 package com.example.chess.AsyncTasks;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
-import android.graphics.Color;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Button;
 
+import com.example.chess.Data.Data;
 import com.example.chess.Data.PlayerInstances;
 
 import java.io.BufferedReader;
@@ -20,19 +22,40 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AsyncTaskPlay extends AsyncTask<String, String, String> {
-    Context context;
-    Button play;
+public class AsyncTaskEndGame extends AsyncTask<String, String, String> {
+    private String answerHTTP;
+    private boolean res;
 
-    public AsyncTaskPlay(Context context, Button play) {
-        this.play = play;
+    Context context;
+
+
+    public AsyncTaskEndGame(Context context, boolean res) {
+        this.res = res;
         this.context = context;
     }
 
-    String server = "http://jws-app-chess.7e14.starter-us-west-2.openshiftapps.com/api/play";
-///serverRegistration_war_exploded
+    String server = "http://jws-app-chess.7e14.starter-us-west-2.openshiftapps.com/api/endgame";
+
     @Override
     protected void onPreExecute() {
+        String messege;
+        if (res){
+            messege = "Вы выиграли";
+        }
+        else {
+            messege = "Вы проиграли";
+        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(messege)
+                .setCancelable(false)
+                .setNegativeButton("Ок",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        AlertDialog alert = builder.create();
+        alert.show();
         super.onPreExecute();
     }
 
@@ -40,16 +63,28 @@ public class AsyncTaskPlay extends AsyncTask<String, String, String> {
     protected String doInBackground(String... params) {
         HashMap<String,String> postDataParams = new HashMap<>();
         postDataParams.put("login", PlayerInstances.getPlayer().getName());
-        performPostCall(server,postDataParams);
-        Log.d("AsyncTask","Play");
+        String messege;
+        if (res){
+            messege = "win";
+        }
+        else {
+            messege = "lose";
+        }
+        postDataParams.put("res", messege);
+
+        answerHTTP = performPostCall(server,postDataParams);
+
         return null;
     }
 
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        play.setTextColor(Color.BLACK);
+        ((Activity) context).finish();
+        Log.d("AsyncTaskEndGame", String.valueOf(res));
     }
+
+
 
     public String performPostCall(String requestUrl, HashMap<String, String> postDataParams){
         URL url;

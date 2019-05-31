@@ -33,4 +33,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icon_plus" />
 
+    <ImageView
+        android:id="@+id/imageView_minus"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_plus"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_minus" />
+
 </android.support.constraint.ConstraintLayout>

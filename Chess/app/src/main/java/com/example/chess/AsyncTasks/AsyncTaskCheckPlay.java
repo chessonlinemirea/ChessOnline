@@ -2,15 +2,10 @@ package com.example.chess.AsyncTasks;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.chess.Activity.GameActivity;
-import com.example.chess.Activity.MainMenuActivity;
-import com.example.chess.Activity.SignInActivity;
 import com.example.chess.Data.MenuPlayers;
 import com.example.chess.Data.PlayerInstances;
 import com.example.chess.Player.Player;
@@ -27,7 +22,6 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.chess.Activity.MainMenuActivity.checkPlay;
 import static com.example.chess.Activity.MainMenuActivity.timer;
 
 public class AsyncTaskCheckPlay extends AsyncTask<String, String, String> {
@@ -62,13 +56,13 @@ public class AsyncTaskCheckPlay extends AsyncTask<String, String, String> {
         super.onPostExecute(result);
         Toast toast = Toast.makeText(context,answerHTTP,Toast.LENGTH_SHORT);
         if (answerHTTP.equals("1")){
-            Toast.makeText(context, "Play", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Старт игры", Toast.LENGTH_LONG).show();
             if(MenuPlayers.getSize() == 1 && !MenuPlayers.getName(0).equals("")){
                 PlayerInstances.addPlayer(new Player(MenuPlayers.getName(0)));
             }
             //transfer();
             timer.cancel();
-            AsyncTaskCheckColor asyncTaskCheckColor = new AsyncTaskCheckColor(context, activity);
+            AsyncTaskStartGame asyncTaskCheckColor = new AsyncTaskStartGame(context, activity);
             asyncTaskCheckColor.execute();
         }
     }

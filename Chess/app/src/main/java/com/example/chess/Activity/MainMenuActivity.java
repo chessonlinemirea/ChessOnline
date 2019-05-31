@@ -84,7 +84,7 @@ public class MainMenuActivity extends AppCompatActivity
                 switch(v.getId())
                 {
                     case R.id.button_play:
-                        AsyncTaskPlay asyncTaskPlay = new AsyncTaskPlay(getApplicationContext());
+                        AsyncTaskPlay asyncTaskPlay = new AsyncTaskPlay(getApplicationContext(), play);
                         asyncTaskPlay.execute();
                         play.setTextColor(Color.GREEN);
                         break;

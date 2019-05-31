@@ -15,7 +15,7 @@
         android:onClick="clickSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_plus" />
+        app:srcCompat="@drawable/icon_plus2" />
 
     <ImageView
         android:id="@+id/imageView8"
