@@ -28,7 +28,7 @@ public class Data {
     private static boolean isShah;
     private static boolean isMat;
     private static boolean outPutRedLine = false;
-    private static boolean outPutRedLineShah = false;
+    private static boolean outPutRedLineShah = true;
 
     public static boolean isCanMove() {
         return canMove;
@@ -107,14 +107,14 @@ public class Data {
         else {
             playerDark = new ArrayList<>();
             ColorEnum color = ColorEnum.DARK;
-            playerDark.add(new Piece(PieceEnum.ROOK, color, playerDark.size(), 0, 7));
-            playerDark.add(new Piece(PieceEnum.KNIGHT, color, playerDark.size(), 1, 7));
-            playerDark.add(new Piece(PieceEnum.BISHOP, color, playerDark.size(), 2, 7));
-            playerDark.add(new Piece(PieceEnum.QUEEN, color, playerDark.size(), 3, 7));
-            playerDark.add(new Piece(PieceEnum.KING, color, playerDark.size(), 4, 7));
-            playerDark.add(new Piece(PieceEnum.BISHOP, color, playerDark.size(), 5, 7));
-            playerDark.add(new Piece(PieceEnum.KNIGHT, color, playerDark.size(), 6, 7));
             playerDark.add(new Piece(PieceEnum.ROOK, color, playerDark.size(), 7, 7));
+            playerDark.add(new Piece(PieceEnum.KNIGHT, color, playerDark.size(), 6, 7));
+            playerDark.add(new Piece(PieceEnum.BISHOP, color, playerDark.size(), 5, 7));
+            playerDark.add(new Piece(PieceEnum.QUEEN, color, playerDark.size(), 4, 7));
+            playerDark.add(new Piece(PieceEnum.KING, color, playerDark.size(), 3, 7));
+            playerDark.add(new Piece(PieceEnum.BISHOP, color, playerDark.size(), 2, 7));
+            playerDark.add(new Piece(PieceEnum.KNIGHT, color, playerDark.size(), 1, 7));
+            playerDark.add(new Piece(PieceEnum.ROOK, color, playerDark.size(), 0, 7));
 
             for (int i = 0; i < 8; i++) {
                 playerDark.add(new Piece(PieceEnum.PAWN, color, playerDark.size(), i, 6));
@@ -123,14 +123,14 @@ public class Data {
             playerLight = new ArrayList<>();
             color = ColorEnum.LIGHT;
 
-            playerLight.add(new Piece(PieceEnum.ROOK, color, playerLight.size(), 0, 0));
-            playerLight.add(new Piece(PieceEnum.KNIGHT, color, playerLight.size(), 1, 0));
-            playerLight.add(new Piece(PieceEnum.BISHOP, color, playerLight.size(), 2, 0));
-            playerLight.add(new Piece(PieceEnum.QUEEN, color, playerLight.size(), 3, 0));
-            playerLight.add(new Piece(PieceEnum.KING, color, playerLight.size(), 4, 0));
-            playerLight.add(new Piece(PieceEnum.BISHOP, color, playerLight.size(), 5, 0));
-            playerLight.add(new Piece(PieceEnum.KNIGHT, color, playerLight.size(), 6, 0));
             playerLight.add(new Piece(PieceEnum.ROOK, color, playerLight.size(), 7, 0));
+            playerLight.add(new Piece(PieceEnum.KNIGHT, color, playerLight.size(), 6, 0));
+            playerLight.add(new Piece(PieceEnum.BISHOP, color, playerLight.size(), 5, 0));
+            playerLight.add(new Piece(PieceEnum.QUEEN, color, playerLight.size(), 4, 0));
+            playerLight.add(new Piece(PieceEnum.KING, color, playerLight.size(), 3, 0));
+            playerLight.add(new Piece(PieceEnum.BISHOP, color, playerLight.size(), 2, 0));
+            playerLight.add(new Piece(PieceEnum.KNIGHT, color, playerLight.size(), 1, 0));
+            playerLight.add(new Piece(PieceEnum.ROOK, color, playerLight.size(), 0, 0));
 
             for (int i = 0; i < 8; i++) {
                 playerLight.add(new Piece(PieceEnum.PAWN, color, playerLight.size(), i, 1));
@@ -189,7 +189,7 @@ public class Data {
     private static void setGreenWayPiece(int column, int line){
         switch (field.get(column).get(line).getPiece().getPieceEnum()){
             case PAWN:
-                setGreenWayPawn(column,line);
+                setGreenWayPawn(reverse(column),reverse(line));
                 break;
             case ROOK:
                 setGreenWayRook(column, line);
@@ -490,7 +490,7 @@ public class Data {
         switch (field.get(column).get(line).getPiece().getPieceEnum()){
             case PAWN:
                 //Log.d("check", "Pawn");
-                checkShahPawn(column,line);
+                checkShahPawn(reverse(column),reverse(line));
                 break;
             case ROOK:
                 //Log.d("check", "Rook");
