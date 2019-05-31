@@ -72,35 +72,69 @@ public class Data {
     }
 
     private static void createPieces(){
-        playerDark = new ArrayList<>();
-        ColorEnum color = ColorEnum.DARK;
-        playerDark.add(new Piece(PieceEnum.ROOK, color, playerDark.size(), 0, 0));
-        playerDark.add(new Piece(PieceEnum.KNIGHT, color, playerDark.size(), 1, 0));
-        playerDark.add(new Piece(PieceEnum.BISHOP, color, playerDark.size(), 2, 0));
-        playerDark.add(new Piece(PieceEnum.QUEEN, color, playerDark.size(), 3, 0));
-        playerDark.add(new Piece(PieceEnum.KING, color, playerDark.size(), 4, 0));
-        playerDark.add(new Piece(PieceEnum.BISHOP, color, playerDark.size(), 5, 0));
-        playerDark.add(new Piece(PieceEnum.KNIGHT, color, playerDark.size(), 6, 0));
-        playerDark.add(new Piece(PieceEnum.ROOK, color, playerDark.size(), 7, 0));
+        if (colorEnum == ColorEnum.LIGHT){
+            playerDark = new ArrayList<>();
+            ColorEnum color = ColorEnum.DARK;
+            playerDark.add(new Piece(PieceEnum.ROOK, color, playerDark.size(), 0, 0));
+            playerDark.add(new Piece(PieceEnum.KNIGHT, color, playerDark.size(), 1, 0));
+            playerDark.add(new Piece(PieceEnum.BISHOP, color, playerDark.size(), 2, 0));
+            playerDark.add(new Piece(PieceEnum.QUEEN, color, playerDark.size(), 3, 0));
+            playerDark.add(new Piece(PieceEnum.KING, color, playerDark.size(), 4, 0));
+            playerDark.add(new Piece(PieceEnum.BISHOP, color, playerDark.size(), 5, 0));
+            playerDark.add(new Piece(PieceEnum.KNIGHT, color, playerDark.size(), 6, 0));
+            playerDark.add(new Piece(PieceEnum.ROOK, color, playerDark.size(), 7, 0));
 
-        for (int i = 0; i < 8; i++) {
-            playerDark.add(new Piece(PieceEnum.PAWN, color, playerDark.size(), i, 1));
+            for (int i = 0; i < 8; i++) {
+                playerDark.add(new Piece(PieceEnum.PAWN, color, playerDark.size(), i, 1));
+            }
+
+            playerLight = new ArrayList<>();
+            color = ColorEnum.LIGHT;
+
+            playerLight.add(new Piece(PieceEnum.ROOK, color, playerLight.size(), 0, 7));
+            playerLight.add(new Piece(PieceEnum.KNIGHT, color, playerLight.size(), 1, 7));
+            playerLight.add(new Piece(PieceEnum.BISHOP, color, playerLight.size(), 2, 7));
+            playerLight.add(new Piece(PieceEnum.QUEEN, color, playerLight.size(), 3, 7));
+            playerLight.add(new Piece(PieceEnum.KING, color, playerLight.size(), 4, 7));
+            playerLight.add(new Piece(PieceEnum.BISHOP, color, playerLight.size(), 5, 7));
+            playerLight.add(new Piece(PieceEnum.KNIGHT, color, playerLight.size(), 6, 7));
+            playerLight.add(new Piece(PieceEnum.ROOK, color, playerLight.size(), 7, 7));
+
+            for (int i = 0; i < 8; i++) {
+                playerLight.add(new Piece(PieceEnum.PAWN, color, playerLight.size(), i, 6));
+            }
         }
+        else {
+            playerDark = new ArrayList<>();
+            ColorEnum color = ColorEnum.DARK;
+            playerDark.add(new Piece(PieceEnum.ROOK, color, playerDark.size(), 0, 7));
+            playerDark.add(new Piece(PieceEnum.KNIGHT, color, playerDark.size(), 1, 7));
+            playerDark.add(new Piece(PieceEnum.BISHOP, color, playerDark.size(), 2, 7));
+            playerDark.add(new Piece(PieceEnum.QUEEN, color, playerDark.size(), 3, 7));
+            playerDark.add(new Piece(PieceEnum.KING, color, playerDark.size(), 4, 7));
+            playerDark.add(new Piece(PieceEnum.BISHOP, color, playerDark.size(), 5, 7));
+            playerDark.add(new Piece(PieceEnum.KNIGHT, color, playerDark.size(), 6, 7));
+            playerDark.add(new Piece(PieceEnum.ROOK, color, playerDark.size(), 7, 7));
 
-        playerLight = new ArrayList<>();
-        color = ColorEnum.LIGHT;
+            for (int i = 0; i < 8; i++) {
+                playerDark.add(new Piece(PieceEnum.PAWN, color, playerDark.size(), i, 6));
+            }
 
-        playerLight.add(new Piece(PieceEnum.ROOK, color, playerLight.size(), 0, 7));
-        playerLight.add(new Piece(PieceEnum.KNIGHT, color, playerLight.size(), 1, 7));
-        playerLight.add(new Piece(PieceEnum.BISHOP, color, playerLight.size(), 2, 7));
-        playerLight.add(new Piece(PieceEnum.QUEEN, color, playerLight.size(), 3, 7));
-        playerLight.add(new Piece(PieceEnum.KING, color, playerLight.size(), 4, 7));
-        playerLight.add(new Piece(PieceEnum.BISHOP, color, playerLight.size(), 5, 7));
-        playerLight.add(new Piece(PieceEnum.KNIGHT, color, playerLight.size(), 6, 7));
-        playerLight.add(new Piece(PieceEnum.ROOK, color, playerLight.size(), 7, 7));
+            playerLight = new ArrayList<>();
+            color = ColorEnum.LIGHT;
 
-        for (int i = 0; i < 8; i++) {
-            playerLight.add(new Piece(PieceEnum.PAWN, color, playerLight.size(), i, 6));
+            playerLight.add(new Piece(PieceEnum.ROOK, color, playerLight.size(), 0, 0));
+            playerLight.add(new Piece(PieceEnum.KNIGHT, color, playerLight.size(), 1, 0));
+            playerLight.add(new Piece(PieceEnum.BISHOP, color, playerLight.size(), 2, 0));
+            playerLight.add(new Piece(PieceEnum.QUEEN, color, playerLight.size(), 3, 0));
+            playerLight.add(new Piece(PieceEnum.KING, color, playerLight.size(), 4, 0));
+            playerLight.add(new Piece(PieceEnum.BISHOP, color, playerLight.size(), 5, 0));
+            playerLight.add(new Piece(PieceEnum.KNIGHT, color, playerLight.size(), 6, 0));
+            playerLight.add(new Piece(PieceEnum.ROOK, color, playerLight.size(), 7, 0));
+
+            for (int i = 0; i < 8; i++) {
+                playerLight.add(new Piece(PieceEnum.PAWN, color, playerLight.size(), i, 1));
+            }
         }
     }
     public static void addAll(ArrayList<Piece> arrayListLidht, ArrayList<Piece> arrayListDark) {
@@ -324,8 +358,6 @@ public class Data {
         piece.setColumn(endColumn);
         piece.setLine(endLine);
         field.get(endColumn).get(endLine).setPiece(piece);
-
-        checkShahPiece(piece.getColumn(), piece.getLine());
 
 
         removeGreenWay();
