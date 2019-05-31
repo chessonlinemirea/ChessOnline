@@ -22,6 +22,7 @@ import com.example.chess.AsyncTasks.AsyncTaskExit;
 import com.example.chess.AsyncTasks.AsyncTaskPlay;
 import com.example.chess.AsyncTasks.AsyncTaskStatus;
 import com.example.chess.AsyncTasks.AsyncTaskUpdate;
+import com.example.chess.Data.Data;
 import com.example.chess.Data.MenuPlayers;
 import com.example.chess.Data.PlayerInstances;
 import com.example.chess.Player.Player;
@@ -188,6 +189,7 @@ public class MainMenuActivity extends AppCompatActivity
         AsyncTaskExit asyncTaskExit = new AsyncTaskExit(getApplicationContext());
         asyncTaskExit.execute();
         timer.cancel();
+        Data.clear();
         super.onDestroy();
     }
 }

@@ -29,6 +29,7 @@ public class ColumnsAdapter extends RecyclerView.Adapter<ColumnsAdapter.ColumnVi
 
 
 
+
     @NonNull
     @Override
     public ColumnViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
