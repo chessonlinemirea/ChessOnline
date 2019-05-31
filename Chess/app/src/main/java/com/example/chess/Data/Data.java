@@ -384,33 +384,33 @@ public class Data {
     }
 
     private static boolean checkKing(int column, int line){
-        boolean temp = true;
+        boolean temp = false;
 
-        if(!field.get(column + 1).get(line + 1).getPiece().isDeath()){
-            temp = false;
-        }
-        if(!field.get(column - 1).get(line - 1).getPiece().isDeath()){
-            temp = false;
-        }
-        if(!field.get(column - 1).get(line + 1).getPiece().isDeath()){
-            temp = false;
-        }
-        if(!field.get(column + 1).get(line - 1).getPiece().isDeath()){
-            temp = false;
-        }
-
-        if(!field.get(column).get(line + 1).getPiece().isDeath()){
-            temp = false;
-        }
-        if(!field.get(column).get(line - 1).getPiece().isDeath()){
-            temp = false;
-        }
-        if(!field.get(column + 1).get(line).getPiece().isDeath()){
-            temp = false;
-        }
-        if(!field.get(column - 1).get(line).getPiece().isDeath()){
-            temp = false;
-        }
+//        if(!field.get(column + 1).get(line + 1).getPiece().isDeath()){
+//            temp = false;
+//        }
+//        if(!field.get(column - 1).get(line - 1).getPiece().isDeath()){
+//            temp = false;
+//        }
+//        if(!field.get(column - 1).get(line + 1).getPiece().isDeath()){
+//            temp = false;
+//        }
+//        if(!field.get(column + 1).get(line - 1).getPiece().isDeath()){
+//            temp = false;
+//        }
+//
+//        if(!field.get(column).get(line + 1).getPiece().isDeath()){
+//            temp = false;
+//        }
+//        if(!field.get(column).get(line - 1).getPiece().isDeath()){
+//            temp = false;
+//        }
+//        if(!field.get(column + 1).get(line).getPiece().isDeath()){
+//            temp = false;
+//        }
+//        if(!field.get(column - 1).get(line).getPiece().isDeath()){
+//            temp = false;
+//        }
 
         return temp;
     }
@@ -541,6 +541,7 @@ public class Data {
 
     private static boolean checkShahCell(int column, int line){
         if (column >= 0 && line >= 0 && column < 8 && line < 8){
+            field.get(column).get(line).setPoint(PointColorEnum.RED);
             if (!field.get(column).get(line).havePiece()){
                 return true;
             }
