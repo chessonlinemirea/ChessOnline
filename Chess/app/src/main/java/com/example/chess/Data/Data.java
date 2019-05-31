@@ -28,7 +28,7 @@ public class Data {
     private static boolean isShah;
     private static boolean isMat;
     private static boolean outPutRedLine = false;
-    private static boolean outPutRedLineShah = false;
+    private static boolean outPutRedLineShah = true;
 
     public static boolean isCanMove() {
         return canMove;
@@ -351,9 +351,9 @@ public class Data {
         columnsAdapter.update();
         checkShah();
 
-        if (isShah){
-            Toast.makeText(context, "Вам шах", Toast.LENGTH_LONG);
-        }
+//        if (isShah){
+//            Toast.makeText(context, "Вам шах", Toast.LENGTH_LONG);
+//        }
         /*else if (isMat){
             Toast.makeText(context, "Вам шах и мат", Toast.LENGTH_LONG);
         }*/
@@ -563,8 +563,7 @@ public class Data {
                 field.get(column).get(line).getPiece().setDeath(true);
                 if(field.get(column).get(line).getPiece().getPieceEnum() == PieceEnum.KING)
                 {
-                    isShah = true;
-                    //Toast.makeText(context, "Шах", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Шах", Toast.LENGTH_LONG).show();
                 }
                 return false;
             }
@@ -595,7 +594,7 @@ public class Data {
                 if(field.get(column).get(line).getPiece().getPieceEnum() == PieceEnum.KING)
                 {
                     isShah = true;
-                    //Toast.makeText(context, "Шах", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Шах", Toast.LENGTH_LONG).show();
                 }
                 return true;
             }
