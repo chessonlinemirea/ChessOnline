@@ -27,7 +27,8 @@ public class Data {
     private static ColumnsAdapter columnsAdapter;
     private static boolean isShah;
     private static boolean isMat;
-    private static boolean redLine = false;
+    private static boolean outPutRedLine = false;
+    private static boolean outPutRedLineShah = false;
 
     public static boolean isCanMove() {
         return canMove;
@@ -548,7 +549,7 @@ public class Data {
 
     private static boolean checkShahCell(int column, int line){
         if (column >= 0 && line >= 0 && column < 8 && line < 8){
-            if (redLine) {
+            if (outPutRedLine) {
                 field.get(column).get(line).setPoint(PointColorEnum.RED);
             }
             if (!field.get(column).get(line).havePiece()){
@@ -556,7 +557,9 @@ public class Data {
             }
             else if (colorEnum == field.get(column).get(line).getPiece().getColor()){
                 //Log.d(field.get(column).get(line).getPiece().getColor().toString(), column + " " + line);
-                //field.get(column).get(line).setPoint(PointColorEnum.RED);
+                if (outPutRedLineShah){
+                    field.get(column).get(line).setPoint(PointColorEnum.RED);
+                }
                 field.get(column).get(line).getPiece().setDeath(true);
                 if(field.get(column).get(line).getPiece().getPieceEnum() == PieceEnum.KING)
                 {
@@ -580,12 +583,14 @@ public class Data {
 
     private static boolean checkShahPawnSide(int column, int line){
         if (column >= 0 && line >= 0 && column < 8 && line < 8){
-            if (redLine) {
+            if (outPutRedLine) {
                 field.get(column).get(line).setPoint(PointColorEnum.RED);
             }
 
             if (field.get(column).get(line).havePiece()){
-                //field.get(column).get(line).setPoint(PointColorEnum.RED);
+                if (outPutRedLineShah){
+                    field.get(column).get(line).setPoint(PointColorEnum.RED);
+                }
                 field.get(column).get(line).getPiece().setDeath(true);
                 if(field.get(column).get(line).getPiece().getPieceEnum() == PieceEnum.KING)
                 {
