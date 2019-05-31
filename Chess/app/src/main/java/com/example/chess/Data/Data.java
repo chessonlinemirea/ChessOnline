@@ -571,6 +571,7 @@ public class Data {
 
     private static boolean checkShahPawnSide(int column, int line){
         if (column >= 0 && line >= 0 && column < 8 && line < 8){
+            field.get(column).get(line).setPoint(PointColorEnum.RED);
             if (field.get(column).get(line).havePiece()){
                 //field.get(column).get(line).setPoint(PointColorEnum.RED);
                 field.get(column).get(line).getPiece().setDeath(true);
