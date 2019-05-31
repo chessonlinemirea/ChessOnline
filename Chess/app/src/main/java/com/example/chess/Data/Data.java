@@ -655,7 +655,7 @@ public class Data {
                 //Log.d(field.get(column).get(line).getPiece().getColor().toString(), column + " " + line);
                 if (outPutRedLineShah){
                     field.get(column).get(line).setPoint(PointColorEnum.RED);
-                    Log.d("Set red point shah", tempPieceRedPoint.getColumn() + " " + tempPieceRedPoint.getLine() + " " + tempPieceRedPoint.toString() + " " + tempPieceRedPoint.getColumn() + " " + tempPieceRedPoint.getLine() + " " + column + " " + line);
+                    Log.d("Set red point shah", tempPieceRedPoint.getColumn() + " " + tempPieceRedPoint.getLine() + " " + tempPieceRedPoint.toString() + " " + column + " " + line);
                 }
                 field.get(column).get(line).getPiece().setDeath(true);
                 if(field.get(column).get(line).getPiece().getPieceEnum() == PieceEnum.KING)
@@ -683,7 +683,7 @@ public class Data {
                 field.get(column).get(line).setPoint(PointColorEnum.RED);
             }
 
-            if (field.get(column).get(line).havePiece()){
+            if (field.get(column).get(line).havePiece() && colorEnum == field.get(column).get(line).getPiece().getColor()){
                 if (outPutRedLineShah){
                     field.get(column).get(line).setPoint(PointColorEnum.RED);
                 }
