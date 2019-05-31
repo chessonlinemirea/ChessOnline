@@ -339,11 +339,19 @@ public class Data {
         }
     }
 
+    public static int reverse(int line){
+        return 7 - line;
+    }
+
     public static void movePiece(Piece piece, int column, int line){
         int startColumn = piece.getColumn();
         int startLine = piece.getLine();
         int endColumn = column;
         int endLine = line;
+        if (colorEnum == ColorEnum.DARK){
+            startLine = reverse(startLine);
+            endLine = reverse(endLine);
+        }
         String move = "";
         move += startColumn + " ";
         move += startLine + " ";
@@ -371,6 +379,10 @@ public class Data {
         int startLine = Integer.valueOf(splitMove[1]);
         int endColumn = Integer.valueOf(splitMove[2]);
         int endLine = Integer.valueOf(splitMove[3]);
+        if (colorEnum == ColorEnum.DARK){
+            startLine = reverse(startLine);
+            endLine = reverse(endLine);
+        }
         Log.d("Split Move", startColumn + " | " + startLine + " | " + endColumn + " | " + endLine);
 
         if (field.get(endColumn).get(endLine).havePiece() && field.get(endColumn).get(endLine).getPiece().getPieceEnum() == PieceEnum.KING){
