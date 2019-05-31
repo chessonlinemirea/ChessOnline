@@ -57,14 +57,14 @@ public class AsyncTaskStartGame extends AsyncTask<String, String, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        if (answerHTTP.equals("light")){
+        if (answerHTTP.equals("light0")){
             Data.setColorEnum(ColorEnum.LIGHT);
             Log.d("setcolor", "light");
             Intent intent = new Intent(context, GameActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }
-        else if (answerHTTP.equals("dark")){
+        else if (answerHTTP.equals("dark0")){
             Data.setColorEnum(ColorEnum.DARK);
             Log.d("setcolor", "dark");
             Intent intent = new Intent(context, GameActivity.class);
