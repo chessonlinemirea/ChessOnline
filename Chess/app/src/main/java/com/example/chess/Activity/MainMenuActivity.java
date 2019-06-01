@@ -189,7 +189,6 @@ public class MainMenuActivity extends AppCompatActivity
         AsyncTaskExit asyncTaskExit = new AsyncTaskExit(getApplicationContext());
         asyncTaskExit.execute();
         timer.cancel();
-        Data.clear();
         super.onDestroy();
     }
 }
