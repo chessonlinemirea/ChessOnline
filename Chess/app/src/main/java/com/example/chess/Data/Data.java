@@ -444,7 +444,7 @@ public class Data {
                                 public void onClick(DialogInterface dialog, int id) {
                                     AsyncTaskEndGame asyncTaskEndGame = new AsyncTaskEndGame(context, false);
                                     asyncTaskEndGame.execute();
-                                    dialog.cancel();
+                                    dialog.dismiss();
                                 }
                             });
 
