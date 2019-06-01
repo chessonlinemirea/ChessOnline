@@ -84,8 +84,13 @@ public class MainMenuActivity extends AppCompatActivity
                 switch(v.getId())
                 {
                     case R.id.button_play:
-                        AsyncTaskPlay asyncTaskPlay = new AsyncTaskPlay(getApplicationContext(), play);
-                        asyncTaskPlay.execute();
+                        if (!MenuPlayers.getName(0).equals("")){
+                            AsyncTaskPlay asyncTaskPlay = new AsyncTaskPlay(getApplicationContext(), play);
+                            asyncTaskPlay.execute();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "Пригласите игрока", Toast.LENGTH_LONG).show();
+                        }
                         play.setTextColor(Color.GREEN);
                         break;
                     case R.id.button_exit:

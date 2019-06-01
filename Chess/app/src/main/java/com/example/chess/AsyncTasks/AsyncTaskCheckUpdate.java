@@ -59,7 +59,8 @@ public class AsyncTaskCheckUpdate extends AsyncTask<String, String, String> {
 
         }
         else if (answerHTTP.equals("1")){
-            MenuPlayers.setStatusFalse(0);
+            AsyncTaskUpdate asyncTaskUpdate = new AsyncTaskUpdate(context);
+            asyncTaskUpdate.execute();
         }
     }
 
