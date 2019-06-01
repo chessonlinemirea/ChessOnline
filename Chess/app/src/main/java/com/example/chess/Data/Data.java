@@ -378,17 +378,7 @@ public class Data {
         int endLine = line;
 
 
-        field.get(startColumn).get(startLine).deletePiece();
-        piece.setColumn(endColumn);
-        piece.setLine(endLine);
-        field.get(endColumn).get(endLine).setPiece(piece);
 
-        if (colorEnum == ColorEnum.DARK){
-            startColumn = reverse(startColumn);
-            startLine = reverse(startLine);
-            endColumn = reverse(endColumn);
-            endLine = reverse(endLine);
-        }
         if (field.get(endColumn).get(endLine).havePiece() && field.get(endColumn).get(endLine).getPiece().getPieceEnum() == PieceEnum.KING){
             //Toast.makeText(context, "Вы победили", Toast.LENGTH_LONG).show();
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -405,6 +395,18 @@ public class Data {
 
             AlertDialog alert = builder.create();
             alert.show();
+        }
+
+        field.get(startColumn).get(startLine).deletePiece();
+        piece.setColumn(endColumn);
+        piece.setLine(endLine);
+        field.get(endColumn).get(endLine).setPiece(piece);
+
+        if (colorEnum == ColorEnum.DARK){
+            startColumn = reverse(startColumn);
+            startLine = reverse(startLine);
+            endColumn = reverse(endColumn);
+            endLine = reverse(endLine);
         }
 
         String move = "";
