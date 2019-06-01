@@ -67,6 +67,9 @@ public class GameActivity extends AppCompatActivity {
                                 .setPositiveButton("Да",
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
+
+                                                AsyncTaskEndGame asyncTaskEndGame = new AsyncTaskEndGame(getApplicationContext(), false);
+                                                asyncTaskEndGame.execute();
                                                 finish();
                                                 dialog.dismiss();
                                             }

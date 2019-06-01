@@ -1,6 +1,8 @@
 package com.example.chess.AsyncTasks;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -54,8 +56,24 @@ public class AsyncTaskCheckMove extends AsyncTask<String, String, String> {
         if (answerHTTP.equals("-1")){
 
         }
-        else if (answerHTTP.equals("-2")){
+        else if (answerHTTP.equals("0")){
             Toast.makeText(context, "AsyncTaskCheckMove ERROR", Toast.LENGTH_LONG).show();
+        }
+        else if (answerHTTP.equals("-3")){
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("Противник сдался")
+                    .setCancelable(false)
+                    .setNegativeButton("Ок",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    AsyncTaskEndGame asyncTaskEndGame = new AsyncTaskEndGame(context, false);
+                                    asyncTaskEndGame.execute();
+                                    dialog.dismiss();
+                                }
+                            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
         }
         else {
             Toast.makeText(context, "Ваш ход", Toast.LENGTH_LONG).show();
