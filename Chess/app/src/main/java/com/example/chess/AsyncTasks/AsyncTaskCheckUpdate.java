@@ -1,16 +1,14 @@
 package com.example.chess.AsyncTasks;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.chess.Activity.GameActivity;
-import com.example.chess.Data.Data;
+import com.example.chess.Class.MenuPlayer;
+import com.example.chess.Data.MenuPlayers;
 import com.example.chess.Data.PlayerInstances;
-import com.example.chess.Enum.ColorEnum;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -24,20 +22,17 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.chess.Activity.MainMenuActivity.checkPlay;
+import static com.example.chess.Activity.MainMenuActivity.checkDialogInvite;
 
-public class AsyncTaskStartGame extends AsyncTask<String, String, String> {
+public class AsyncTaskCheckUpdate extends AsyncTask<String, String, String> {
     private String  answerHTTP;
-
     Context context;
-    Activity activity;
 
-    public AsyncTaskStartGame(Context context, Activity activity) {
+    public AsyncTaskCheckUpdate(Context context) {
         this.context = context;
-        this.activity = activity;
     }
 
-    String server = "http://jws-app-chess.7e14.starter-us-west-2.openshiftapps.com/api/startgame";
+    String server = "http://jws-app-chess.7e14.starter-us-west-2.openshiftapps.com/api/checkupdate";
 
     @Override
     protected void onPreExecute() {
@@ -47,34 +42,25 @@ public class AsyncTaskStartGame extends AsyncTask<String, String, String> {
     @Override
     protected String doInBackground(String... params) {
         HashMap<String,String> postDataParams = new HashMap<>();
-        postDataParams.put("id1", String.valueOf(PlayerInstances.getPlayer().getId()));
-        postDataParams.put("id2", String.valueOf(PlayerInstances.getOpponent(0).getId()));
+        postDataParams.put("login", String.valueOf(PlayerInstances.getPlayer().getName()));
         answerHTTP = performPostCall(server,postDataParams);
-        Log.d("CheckColor",answerHTTP);
+        Log.d("check update",answerHTTP);
+
         return null;
     }
 
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        if (answerHTTP.equals("light")){
-            Data.setColorEnum(ColorEnum.LIGHT);
-            Log.d("setcolor", "light");
-            Intent intent = new Intent(context, GameActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
+        if (answerHTTP.equals("0")){
+
         }
-        else if (answerHTTP.equals("dark")){
-            Data.setColorEnum(ColorEnum.DARK);
-            Log.d("setcolor", "dark");
-            Intent intent = new Intent(context, GameActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-        }
-        else {
-            Toast.makeText(context, "CheckColor EROR", Toast.LENGTH_LONG).show();
+        else if (answerHTTP.equals("1")){
+            MenuPlayers.setStatusFalse(0);
         }
     }
+
+
 
     public String performPostCall(String requestUrl, HashMap<String, String> postDataParams){
         URL url;
@@ -121,5 +107,42 @@ public class AsyncTaskStartGame extends AsyncTask<String, String, String> {
         }
 
         return result.toString();
+    }
+    public void invite(final String name)
+    {
+        //уведомлие приглашение в игру
+        if(!name.equals("")){
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("Invite")
+                    .setMessage("Join the game with player " + name + "?")
+//                .setIcon(R.drawable.ic_android_cat)
+                    .setCancelable(false)
+                    .setNegativeButton("No",
+                            new DialogInterface.OnClickListener()
+                            {
+                                public void onClick(DialogInterface dialog, int id)
+                                {
+                                    AsyncTaskInviteResult asyncTaskInviteResult = new AsyncTaskInviteResult("no", context);
+                                    asyncTaskInviteResult.execute();
+                                    dialog.dismiss();
+                                    checkDialogInvite = false;
+                                }
+                            })
+                    .setPositiveButton("Yes",
+                            new DialogInterface.OnClickListener()
+                            {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which)
+                                {
+                                    AsyncTaskInviteResult asyncTaskInviteResult = new AsyncTaskInviteResult("yes", context);
+                                    asyncTaskInviteResult.execute();
+                                    MenuPlayers.toIvite(name);
+                                    dialog.dismiss();
+                                    checkDialogInvite = false;
+                                }
+                            });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
     }
 }

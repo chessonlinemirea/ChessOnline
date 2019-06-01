@@ -24,6 +24,7 @@ public class MenuPlayers {
         update();
     }
 
+
     public static void addItem(String str){
         if(!thereIs(str)){
             playersList.add(new MenuPlayer(str));
@@ -82,6 +83,12 @@ public class MenuPlayers {
             return playersList.get(i).getName();
         }
         else return "";
+    }
+
+    public static void setStatusFalse(int i){
+        playersList.get(i).setBoolStatus(false);
+        Sort();
+        update();
     }
 
     public static void Sort(){

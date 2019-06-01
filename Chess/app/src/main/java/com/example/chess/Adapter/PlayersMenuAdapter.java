@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.chess.AsyncTasks.AsyncTaskInvite;
+import com.example.chess.AsyncTasks.AsyncTaskUpdate;
 import com.example.chess.Class.MenuPlayer;
 import com.example.chess.Data.MenuPlayers;
 import com.example.chess.Data.PlayerInstances;
@@ -98,6 +99,14 @@ public class PlayersMenuAdapter extends RecyclerView.Adapter<PlayersMenuAdapter.
                             listener.onItemClick(position);
                         }
                     }
+                }
+            });
+
+            minus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AsyncTaskUpdate asyncTaskUpdate = new AsyncTaskUpdate(context, getAdapterPosition());
+                    asyncTaskUpdate.execute();
                 }
             });
 

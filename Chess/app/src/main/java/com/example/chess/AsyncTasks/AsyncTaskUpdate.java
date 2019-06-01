@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.chess.Class.MenuPlayer;
+import com.example.chess.Data.MenuPlayers;
 import com.example.chess.Data.PlayerInstances;
 
 import java.io.BufferedReader;
@@ -20,9 +22,11 @@ import java.util.Map;
 
 public class AsyncTaskUpdate extends AsyncTask<String, String, String> {
     Context context;
+    int position;
 
-    public AsyncTaskUpdate(Context context) {
+    public AsyncTaskUpdate(Context context, int position) {
         this.context = context;
+        this.position = position;
     }
 
     String server = "http://jws-app-chess.7e14.starter-us-west-2.openshiftapps.com/api/update";
@@ -43,6 +47,7 @@ public class AsyncTaskUpdate extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPostExecute(String result) {
+        MenuPlayers.setStatusFalse(position);
         super.onPostExecute(result);
     }
 

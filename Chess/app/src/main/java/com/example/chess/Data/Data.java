@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.chess.Adapter.ColumnsAdapter;
+import com.example.chess.Adapter.MoveHistoryAdapter;
 import com.example.chess.AsyncTasks.AsyncTaskEndGame;
 import com.example.chess.AsyncTasks.AsyncTaskMove;
 import com.example.chess.Class.Cell;
@@ -29,6 +30,7 @@ public class Data {
     private static ColorEnum colorEnum;
     static Context context;
     private static ColumnsAdapter columnsAdapter;
+    private static MoveHistoryAdapter moveHistoryAdapter;
     private static boolean isShah;
     private static boolean isMat;
     private static boolean outPutRedLine = false;
@@ -42,7 +44,7 @@ public class Data {
         Data.canMove = canMove;
     }
 
-    public static void create(Context contextt)
+    public static void create(Context contextt, MoveHistoryAdapter moveHistoryAdapters)
     {
         context = contextt;
         createPieces();
@@ -63,9 +65,11 @@ public class Data {
         playerDark.clear();
     }
 
-    public static void bildRecyclerView(RecyclerView columns) {
+    public static void bildRecyclerView(RecyclerView columns, RecyclerView moves) {
         columnsAdapter = new ColumnsAdapter();
         columns.setAdapter(columnsAdapter);
+        moveHistoryAdapter = new MoveHistoryAdapter();
+        moves.setAdapter(moveHistoryAdapter);
     }
 
     private static void createField(){
@@ -372,6 +376,7 @@ public class Data {
     }
 
     public static void movePiece(Piece piece, int column, int line){
+        String way = piece.toString();
         int startColumn = piece.getColumn();
         int startLine = piece.getLine();
         int endColumn = column;
@@ -402,6 +407,8 @@ public class Data {
         piece.setLine(endLine);
         field.get(endColumn).get(endLine).setPiece(piece);
 
+
+
         if (colorEnum == ColorEnum.DARK){
             startColumn = reverse(startColumn);
             startLine = reverse(startLine);
@@ -415,6 +422,7 @@ public class Data {
         move += endColumn + " ";
         move += endLine;
 
+        moveHistoryAdapter.add(move, way);
 
 
         removeGreenWay();
@@ -434,6 +442,8 @@ public class Data {
             endColumn = reverse(endColumn);
             endLine = reverse(endLine);
         }
+
+
         Log.d("Split Move", startColumn + " | " + startLine + " | " + endColumn + " | " + endLine);
 
         if (field.get(endColumn).get(endLine).havePiece() && field.get(endColumn).get(endLine).getPiece().getPieceEnum() == PieceEnum.KING){
@@ -454,11 +464,13 @@ public class Data {
             alert.show();
         }
         Piece piece = field.get(startColumn).get(startLine).getPiece();
+        String way = piece.toString();
 
         field.get(startColumn).get(startLine).deletePiece();
         piece.setColumn(endColumn);
         piece.setLine(endLine);
         field.get(endColumn).get(endLine).setPiece(piece);
+        moveHistoryAdapter.add(move, way);
         columnsAdapter.update();
         //checkShah();
 

@@ -18,14 +18,14 @@ import android.widget.Toast;
 import com.example.chess.AsyncTasks.AsyncTaskCheckInviteResult;
 import com.example.chess.AsyncTasks.AsyncTaskCheckIvite;
 import com.example.chess.AsyncTasks.AsyncTaskCheckPlay;
+import com.example.chess.AsyncTasks.AsyncTaskCheckStatistic;
+import com.example.chess.AsyncTasks.AsyncTaskCheckUpdate;
 import com.example.chess.AsyncTasks.AsyncTaskExit;
 import com.example.chess.AsyncTasks.AsyncTaskPlay;
 import com.example.chess.AsyncTasks.AsyncTaskStatus;
 import com.example.chess.AsyncTasks.AsyncTaskUpdate;
-import com.example.chess.Data.Data;
 import com.example.chess.Data.MenuPlayers;
 import com.example.chess.Data.PlayerInstances;
-import com.example.chess.Player.Player;
 import com.example.chess.R;
 
 import java.util.Timer;
@@ -65,7 +65,7 @@ public class MainMenuActivity extends AppCompatActivity
 
         search = findViewById(R.id.search);
         plusSearch = findViewById(R.id.imageView_search_plus);
-        playersList = findViewById(R.id.recyclerView);
+        playersList = findViewById(R.id.recyclerView_moves);
         play = findViewById(R.id.button_play);
         settings = findViewById(R.id.button_settings);
         exit = findViewById(R.id.button_exit);
@@ -93,7 +93,7 @@ public class MainMenuActivity extends AppCompatActivity
                         finish();
                         break;
                     case R.id.button_settings:
-                        startActivity(new Intent(MainMenuActivity.this, SettingsActivity.class));
+                        startActivity(new Intent(MainMenuActivity.this, StatisticActivity.class));
                         break;
                     case R.id.imageView_search_plus:
                         status = false;
@@ -114,8 +114,7 @@ public class MainMenuActivity extends AppCompatActivity
                         Log.d("asyncTask", "status");
                         break;
                     case R.id.imageView_update:
-                        AsyncTaskUpdate asyncTaskUpdate = new AsyncTaskUpdate(getApplicationContext());
-                        asyncTaskUpdate.execute();
+
                         break;
                 }
                 MenuPlayers.getPlayersAdapter().update();
@@ -127,27 +126,6 @@ public class MainMenuActivity extends AppCompatActivity
         play.setOnClickListener(clickListener);
         exit.setOnClickListener(clickListener);
         settings.setOnClickListener(clickListener);
-
-        /*plusSearch.setOnClickListener(new View.OnClickListener() {   //нажатие кнопки плюсика в строке поиска
-            @Override
-            public void onClick(View v) {
-                                                                                  //ДЛЯ ФЕДИ И ВАНИ!!!!!! ДОБАВИТЬ ОТПРАВКУ ПРИГЛАШЕНИЯ ДРУГА
-
-
-                if (true){                                                        //ДЛЯ ФЕДИ И ВАНИ!!!!!! ИСПРАВИТЬ УСЛОВИЕ (ОТВЕТ ОТ ДРУГА)
-                    playersAdapter.addItem(String.valueOf(search.getText()));
-                    search.setText("");
-//                    invite(String.valueOf(search.getText()));    // проверка функции инвайт в соло режиме
-//                    search.setText("");
-                }
-                else{
-                    Toast toast = Toast.makeText(getApplicationContext(), "Player is offline", Toast.LENGTH_SHORT);  //уведомление что игрок не в сети
-                    toast.setGravity(Gravity.BOTTOM, 0, 0);
-                    toast.show();
-                }
-            }
-        });*/
-
 
         bildRecyclerView(); //cборка листа
         timer = new Timer();
@@ -168,6 +146,10 @@ public class MainMenuActivity extends AppCompatActivity
                     if (PlayerInstances.getPlayer().isInvite() == true){
                         AsyncTaskCheckInviteResult asyncTaskCheckInviteResult = new AsyncTaskCheckInviteResult(MainMenuActivity.this);
                         asyncTaskCheckInviteResult.execute();
+                    }
+                    if (!MenuPlayers.getName(0).equals("")){
+                        AsyncTaskCheckUpdate asyncTaskCheckUpdate = new AsyncTaskCheckUpdate(getApplicationContext());
+                        asyncTaskCheckUpdate.execute();
                     }
                     AsyncTaskCheckPlay asyncTaskCheckPlay = new AsyncTaskCheckPlay(getApplicationContext(),MainMenuActivity.this);
                     asyncTaskCheckPlay.execute();

@@ -2,15 +2,14 @@ package com.example.chess.AsyncTasks;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.chess.Activity.GameActivity;
-import com.example.chess.Data.Data;
+import com.example.chess.Data.MenuPlayers;
 import com.example.chess.Data.PlayerInstances;
-import com.example.chess.Enum.ColorEnum;
+import com.example.chess.Player.Player;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -24,20 +23,24 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.chess.Activity.MainMenuActivity.checkPlay;
+import static com.example.chess.Activity.MainMenuActivity.timer;
 
-public class AsyncTaskStartGame extends AsyncTask<String, String, String> {
+public class AsyncTaskCheckStatistic extends AsyncTask<String, String, String> {
     private String  answerHTTP;
+    TextView game;
+    TextView win;
+    TextView lose;
 
     Context context;
-    Activity activity;
 
-    public AsyncTaskStartGame(Context context, Activity activity) {
+    public AsyncTaskCheckStatistic(Context context, TextView game, TextView win, TextView lose) {
+        this.win = win;
+        this.lose = lose;
+        this.game = game;
         this.context = context;
-        this.activity = activity;
     }
 
-    String server = "http://jws-app-chess.7e14.starter-us-west-2.openshiftapps.com/api/startgame";
+    String server = "http://jws-app-chess.7e14.starter-us-west-2.openshiftapps.com/api/checkstat";
 
     @Override
     protected void onPreExecute() {
@@ -47,33 +50,34 @@ public class AsyncTaskStartGame extends AsyncTask<String, String, String> {
     @Override
     protected String doInBackground(String... params) {
         HashMap<String,String> postDataParams = new HashMap<>();
-        postDataParams.put("id1", String.valueOf(PlayerInstances.getPlayer().getId()));
-        postDataParams.put("id2", String.valueOf(PlayerInstances.getOpponent(0).getId()));
+        postDataParams.put("login", PlayerInstances.getPlayer().getName());
         answerHTTP = performPostCall(server,postDataParams);
-        Log.d("CheckColor",answerHTTP);
+        Log.d("CheckStat",answerHTTP);
         return null;
     }
 
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        if (answerHTTP.equals("light")){
-            Data.setColorEnum(ColorEnum.LIGHT);
-            Log.d("setcolor", "light");
-            Intent intent = new Intent(context, GameActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-        }
-        else if (answerHTTP.equals("dark")){
-            Data.setColorEnum(ColorEnum.DARK);
-            Log.d("setcolor", "dark");
-            Intent intent = new Intent(context, GameActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-        }
-        else {
-            Toast.makeText(context, "CheckColor EROR", Toast.LENGTH_LONG).show();
-        }
+        Toast toast = Toast.makeText(context,answerHTTP,Toast.LENGTH_SHORT);
+        String splitMove[] = answerHTTP.split(" ");
+        int iWin = Integer.valueOf(splitMove[0]);
+        int iLose = Integer.valueOf(splitMove[1]);
+        game.setText(String.valueOf(iWin + iLose));
+        win.setText(String.valueOf(iWin));
+        lose.setText(String.valueOf(iLose));
+    }
+
+    public void transfer()
+    {
+//        SizePlayers = MenuPlayers.getSize();
+//        for (int i = 0; i < SizePlayers; i++)
+//        {
+//            if (MenuPlayers.getName(i) != "")
+//            {
+//                Players[i] = MenuPlayers.getName(i);
+//            }
+//        }
     }
 
     public String performPostCall(String requestUrl, HashMap<String, String> postDataParams){
