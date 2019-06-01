@@ -109,22 +109,6 @@ public class PlayersMenuAdapter extends RecyclerView.Adapter<PlayersMenuAdapter.
                     asyncTaskUpdate.execute();
                 }
             });
-
-//            plus.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Log.d("minus", "click");
-//                    if(MenuPlayers.i)
-//
-//                    //isPlay(position);
-//                    if (listener != null){
-//                        int position = getAdapterPosition();
-//                        if (position != RecyclerView.NO_POSITION){
-//                            listener.onItemClick(position);
-//                        }
-//                    }
-//                }
-//            });
         }
 
         void bind(MenuPlayer plaer){

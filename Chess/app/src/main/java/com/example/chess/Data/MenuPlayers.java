@@ -79,7 +79,7 @@ public class MenuPlayers {
     }
 
     public static String getName(int i){
-        if (playersList.get(i).isBoolStatus()){
+        if (playersList != null && playersList.size() > 0 && playersList.get(i) != null && playersList.get(i).isBoolStatus()){
             return playersList.get(i).getName();
         }
         else return "";
