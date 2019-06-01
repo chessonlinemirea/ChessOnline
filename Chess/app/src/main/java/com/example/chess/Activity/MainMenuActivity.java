@@ -41,7 +41,6 @@ public class MainMenuActivity extends AppCompatActivity
     public static boolean checkPlay = false;
     public static Timer timer;
     public static boolean checkDialogInvite = false;
-    public static boolean CheckPlay = true;
 
     private EditText search;      // строка поиска
     private ImageView plusSearch; //кнопка плюсик в строке поиска
@@ -157,10 +156,8 @@ public class MainMenuActivity extends AppCompatActivity
                         AsyncTaskCheckUpdate asyncTaskCheckUpdate = new AsyncTaskCheckUpdate(getApplicationContext(), MenuPlayers.getName(0));
                         asyncTaskCheckUpdate.execute();
                     }
-                    if(checkPlay == true){
-                        AsyncTaskCheckPlay asyncTaskCheckPlay = new AsyncTaskCheckPlay(getApplicationContext(),MainMenuActivity.this);
-                        asyncTaskCheckPlay.execute();
-                    }
+                    AsyncTaskCheckPlay asyncTaskCheckPlay = new AsyncTaskCheckPlay(getApplicationContext(),MainMenuActivity.this);
+                    asyncTaskCheckPlay.execute();
                 }
             });
 
@@ -172,6 +169,10 @@ public class MainMenuActivity extends AppCompatActivity
         MenuPlayers.buildRecyclerView(this, playersList);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
     @Override
     protected void onDestroy()
