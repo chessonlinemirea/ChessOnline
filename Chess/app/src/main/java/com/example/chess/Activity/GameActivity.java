@@ -126,7 +126,7 @@ public class GameActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     if (!canMove){
-                        AsyncTaskCheckMove asyncTaskCheckMove = new AsyncTaskCheckMove(getApplicationContext());
+                        AsyncTaskCheckMove asyncTaskCheckMove = new AsyncTaskCheckMove(GameActivity.this);
                         asyncTaskCheckMove.execute();
                     }
                 }
