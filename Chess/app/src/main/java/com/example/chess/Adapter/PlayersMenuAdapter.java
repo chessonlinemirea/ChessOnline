@@ -106,7 +106,7 @@ public class PlayersMenuAdapter extends RecyclerView.Adapter<PlayersMenuAdapter.
             minus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (!MenuPlayers.getName(0).equals("")){
+                    if (!MenuPlayers.getName(0).equals("") && getAdapterPosition() == 0){
                         AsyncTaskUpdate asyncTaskUpdate = new AsyncTaskUpdate(context);
                         asyncTaskUpdate.execute();
                     }
