@@ -66,7 +66,7 @@ public class AsyncTaskCheckMove extends AsyncTask<String, String, String> {
                     .setNegativeButton("Ок",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    AsyncTaskEndGame asyncTaskEndGame = new AsyncTaskEndGame(context, false);
+                                    AsyncTaskEndGame asyncTaskEndGame = new AsyncTaskEndGame(context, true);
                                     asyncTaskEndGame.execute();
                                     dialog.dismiss();
                                 }

@@ -61,7 +61,7 @@ public class AsyncTaskCheckPlay extends AsyncTask<String, String, String> {
                 PlayerInstances.addPlayer(new Player(MenuPlayers.getName(0)));
             }
             //transfer();
-            timer.cancel();
+            //timer.cancel();
             AsyncTaskStartGame asyncTaskCheckColor = new AsyncTaskStartGame(context, activity);
             asyncTaskCheckColor.execute();
         }
