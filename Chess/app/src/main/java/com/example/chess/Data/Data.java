@@ -1,6 +1,8 @@
 package com.example.chess.Data;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
@@ -383,8 +385,20 @@ public class Data {
 
         if (field.get(endColumn).get(endLine).havePiece() && field.get(endColumn).get(endLine).getPiece().getPieceEnum() == PieceEnum.KING){
             //Toast.makeText(context, "Вы победили", Toast.LENGTH_LONG).show();
-            AsyncTaskEndGame asyncTaskEndGame = new AsyncTaskEndGame(context, true);
-            asyncTaskEndGame.execute();
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("Вы выиграли")
+                    .setCancelable(false)
+                    .setNegativeButton("Ок",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    AsyncTaskEndGame asyncTaskEndGame = new AsyncTaskEndGame(context, true);
+                                    asyncTaskEndGame.execute();
+                                    dialog.cancel();
+                                }
+                            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
         }
 
         if (colorEnum == ColorEnum.DARK){
@@ -422,8 +436,20 @@ public class Data {
 
         if (field.get(endColumn).get(endLine).havePiece() && field.get(endColumn).get(endLine).getPiece().getPieceEnum() == PieceEnum.KING){
             //Toast.makeText(context, "Вы проиграли", Toast.LENGTH_LONG).show();
-            AsyncTaskEndGame asyncTaskEndGame = new AsyncTaskEndGame(context, false);
-            asyncTaskEndGame.execute();
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("Вы проиграли")
+                    .setCancelable(false)
+                    .setNegativeButton("Ок",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    AsyncTaskEndGame asyncTaskEndGame = new AsyncTaskEndGame(context, false);
+                                    asyncTaskEndGame.execute();
+                                    dialog.cancel();
+                                }
+                            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
         }
         Piece piece = field.get(startColumn).get(startLine).getPiece();
 

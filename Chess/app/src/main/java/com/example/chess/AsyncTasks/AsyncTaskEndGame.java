@@ -38,24 +38,6 @@ public class AsyncTaskEndGame extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPreExecute() {
-        String messege;
-        if (res){
-            messege = "Вы выиграли";
-        }
-        else {
-            messege = "Вы проиграли";
-        }
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(messege)
-                .setCancelable(false)
-                .setNegativeButton("Ок",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-        AlertDialog alert = builder.create();
-        alert.show();
         super.onPreExecute();
     }
 
