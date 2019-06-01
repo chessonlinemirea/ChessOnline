@@ -31,7 +31,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         columns = findViewById(R.id.columns);
-        Data.create(getApplicationContext());
+        Data.create(GameActivity.this);
         bildRecyclerView();
         timer = new Timer();
         timer.schedule(new UpdateTimeTask(), 0, 2000);
