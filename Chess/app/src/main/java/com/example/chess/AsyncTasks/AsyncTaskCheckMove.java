@@ -58,9 +58,9 @@ public class AsyncTaskCheckMove extends AsyncTask<String, String, String> {
             Toast.makeText(context, "AsyncTaskCheckMove ERROR", Toast.LENGTH_LONG).show();
         }
         else {
+            Toast.makeText(context, "Ваш ход", Toast.LENGTH_LONG).show();
             Data.setCanMove(true);
             Data.moveOpponent(answerHTTP);
-            Toast.makeText(context, "Ваш ход", Toast.LENGTH_LONG).show();
             Log.d("AsyncTask", "Move " + answerHTTP);
         }
     }
