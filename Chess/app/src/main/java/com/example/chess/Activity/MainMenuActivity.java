@@ -169,10 +169,10 @@ public class MainMenuActivity extends AppCompatActivity
         MenuPlayers.buildRecyclerView(this, playersList);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//    }
 
     @Override
     protected void onDestroy()
