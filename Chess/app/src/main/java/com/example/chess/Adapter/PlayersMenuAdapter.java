@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.chess.AsyncTasks.AsyncTaskInvite;
 import com.example.chess.AsyncTasks.AsyncTaskUpdate;
@@ -105,8 +106,13 @@ public class PlayersMenuAdapter extends RecyclerView.Adapter<PlayersMenuAdapter.
             minus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AsyncTaskUpdate asyncTaskUpdate = new AsyncTaskUpdate(context);
-                    asyncTaskUpdate.execute();
+                    if (!MenuPlayers.getName(0).equals("")){
+                        AsyncTaskUpdate asyncTaskUpdate = new AsyncTaskUpdate(context);
+                        asyncTaskUpdate.execute();
+                    }
+                    else {
+                        Toast.makeText(context, "Вы не в лобби", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }

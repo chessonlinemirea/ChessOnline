@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.chess.Class.MenuPlayer;
 import com.example.chess.Data.MenuPlayers;
@@ -59,6 +60,7 @@ public class AsyncTaskCheckUpdate extends AsyncTask<String, String, String> {
 
         }
         else if (answerHTTP.equals("1")){
+            Toast.makeText(context, "Игрок вышел из лобби", Toast.LENGTH_LONG).show();
             AsyncTaskUpdate asyncTaskUpdate = new AsyncTaskUpdate(context);
             asyncTaskUpdate.execute();
         }
