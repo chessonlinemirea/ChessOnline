@@ -148,7 +148,7 @@ public class MainMenuActivity extends AppCompatActivity
                         asyncTaskCheckInviteResult.execute();
                     }
                     if (!MenuPlayers.getName(0).equals("")){
-                        AsyncTaskCheckUpdate asyncTaskCheckUpdate = new AsyncTaskCheckUpdate(getApplicationContext());
+                        AsyncTaskCheckUpdate asyncTaskCheckUpdate = new AsyncTaskCheckUpdate(getApplicationContext(), MenuPlayers.getName(0));
                         asyncTaskCheckUpdate.execute();
                     }
                     AsyncTaskCheckPlay asyncTaskCheckPlay = new AsyncTaskCheckPlay(getApplicationContext(),MainMenuActivity.this);

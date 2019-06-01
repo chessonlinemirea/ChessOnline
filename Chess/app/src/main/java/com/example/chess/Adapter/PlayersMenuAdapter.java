@@ -105,7 +105,7 @@ public class PlayersMenuAdapter extends RecyclerView.Adapter<PlayersMenuAdapter.
             minus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AsyncTaskUpdate asyncTaskUpdate = new AsyncTaskUpdate(context, getAdapterPosition());
+                    AsyncTaskUpdate asyncTaskUpdate = new AsyncTaskUpdate(context);
                     asyncTaskUpdate.execute();
                 }
             });
@@ -116,6 +116,9 @@ public class PlayersMenuAdapter extends RecyclerView.Adapter<PlayersMenuAdapter.
             if (plaer.isBoolStatus()){
                 listStatus.setText("play");
                 listStatus.setTextColor(Color.GREEN);
+            }
+            else {
+                listStatus.setText("");
             }
         }
     }

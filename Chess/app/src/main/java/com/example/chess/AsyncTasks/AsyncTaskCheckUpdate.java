@@ -27,9 +27,11 @@ import static com.example.chess.Activity.MainMenuActivity.checkDialogInvite;
 public class AsyncTaskCheckUpdate extends AsyncTask<String, String, String> {
     private String  answerHTTP;
     Context context;
+    String whoplay;
 
-    public AsyncTaskCheckUpdate(Context context) {
+    public AsyncTaskCheckUpdate(Context context, String whoplay) {
         this.context = context;
+        this.whoplay = whoplay;
     }
 
     String server = "http://jws-app-chess.7e14.starter-us-west-2.openshiftapps.com/api/checkupdate";
@@ -43,6 +45,7 @@ public class AsyncTaskCheckUpdate extends AsyncTask<String, String, String> {
     protected String doInBackground(String... params) {
         HashMap<String,String> postDataParams = new HashMap<>();
         postDataParams.put("login", String.valueOf(PlayerInstances.getPlayer().getName()));
+        postDataParams.put("whoplay", whoplay);
         answerHTTP = performPostCall(server,postDataParams);
         Log.d("check update",answerHTTP);
 

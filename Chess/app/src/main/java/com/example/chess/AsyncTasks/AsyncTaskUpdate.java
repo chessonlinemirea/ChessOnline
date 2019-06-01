@@ -22,11 +22,9 @@ import java.util.Map;
 
 public class AsyncTaskUpdate extends AsyncTask<String, String, String> {
     Context context;
-    int position;
 
-    public AsyncTaskUpdate(Context context, int position) {
+    public AsyncTaskUpdate(Context context) {
         this.context = context;
-        this.position = position;
     }
 
     String server = "http://jws-app-chess.7e14.starter-us-west-2.openshiftapps.com/api/update";
@@ -47,7 +45,7 @@ public class AsyncTaskUpdate extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        MenuPlayers.setStatusFalse(position);
+        MenuPlayers.setStatusFalse(0);
         super.onPostExecute(result);
     }
 
