@@ -122,7 +122,6 @@ public class MainMenuActivity extends AppCompatActivity
         };
 
         plusSearch.setOnClickListener(clickListener);
-        update.setOnClickListener(clickListener);
         play.setOnClickListener(clickListener);
         exit.setOnClickListener(clickListener);
         settings.setOnClickListener(clickListener);
