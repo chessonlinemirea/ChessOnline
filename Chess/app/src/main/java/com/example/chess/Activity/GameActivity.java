@@ -70,7 +70,6 @@ public class GameActivity extends AppCompatActivity {
 
                                                 AsyncTaskEndGame asyncTaskEndGame = new AsyncTaskEndGame(getApplicationContext(), false);
                                                 asyncTaskEndGame.execute();
-                                                finish();
                                                 dialog.dismiss();
                                             }
                                         })
