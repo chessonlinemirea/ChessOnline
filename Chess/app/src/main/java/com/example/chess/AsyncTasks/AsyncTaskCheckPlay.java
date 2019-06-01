@@ -22,6 +22,7 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.chess.Activity.MainMenuActivity.checkPlay;
 import static com.example.chess.Activity.MainMenuActivity.timer;
 
 public class AsyncTaskCheckPlay extends AsyncTask<String, String, String> {
@@ -62,6 +63,7 @@ public class AsyncTaskCheckPlay extends AsyncTask<String, String, String> {
             }
             //transfer();
             //timer.cancel();
+            checkPlay = false;
             AsyncTaskStartGame asyncTaskCheckColor = new AsyncTaskStartGame(context, activity);
             asyncTaskCheckColor.execute();
         }

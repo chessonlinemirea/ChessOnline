@@ -22,6 +22,8 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.chess.Activity.MainMenuActivity.checkPlay;
+
 public class AsyncTaskEndGame extends AsyncTask<String, String, String> {
     private String answerHTTP;
     private boolean res;
@@ -62,6 +64,7 @@ public class AsyncTaskEndGame extends AsyncTask<String, String, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
+        checkPlay = true;
         ((Activity) context).finish();
         Log.d("AsyncTaskEndGame", String.valueOf(res));
     }
