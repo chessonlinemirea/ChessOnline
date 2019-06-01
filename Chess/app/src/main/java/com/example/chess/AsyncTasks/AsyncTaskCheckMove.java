@@ -60,6 +60,7 @@ public class AsyncTaskCheckMove extends AsyncTask<String, String, String> {
         else {
             Data.setCanMove(true);
             Data.moveOpponent(answerHTTP);
+            Toast.makeText(context, "Ваш ход", Toast.LENGTH_LONG).show();
             Log.d("AsyncTask", "Move " + answerHTTP);
         }
     }
